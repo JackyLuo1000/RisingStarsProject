@@ -42,7 +42,7 @@ namespace Ingredients
             try
             {
                 StreamWriter sw = new StreamWriter("C:\\RisingStarsProject\\RisingStarProject\\Ingredients\\TXTs\\IngredientTest.txt");
-                sw.WriteLine("");
+                sw.WriteLine("Ingredients go here.");
 
                 sw.Close();
             }
