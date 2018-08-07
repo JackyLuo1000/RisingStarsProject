@@ -26,5 +26,7 @@ namespace RisingStarProject
         {
             this.InitializeComponent();
         }
+
+
     }
 }
