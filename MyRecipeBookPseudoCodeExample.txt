@@ -1,0 +1,35 @@
+Recipe
+{
+	string type property
+	string name property
+	List<Ingredient> ingredients property
+	
+	
+	toString Overide
+		format the out put
+}
+
+Ingredient
+{
+	string type property
+	string name property
+	float quantity property
+	string measurment property
+	
+	
+	toString Overide
+		format the out put
+}
+
+CreateIngredient
+{
+	Pull information from user
+	Use information to create ingredient
+	
+}
+
+CreateRecipe
+{
+	Pull information from user
+	Use information to create recipe
+}
