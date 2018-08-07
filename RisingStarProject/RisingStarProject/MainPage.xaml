@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Canvas 
+            Background="Black"
+            Height="100"
+            Width="100">
+        </Canvas>
 
     </Grid>
 </Page>
