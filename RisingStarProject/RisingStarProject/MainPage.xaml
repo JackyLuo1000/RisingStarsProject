@@ -10,23 +10,26 @@
 
     <Grid>
         <TextBox x:Name="SearchBox"
-            Background="Gray"
-            Text="Search"
-            TextAlignment="Center"
-            FontSize="65"
-            Height="100"
-            Width="500"
-            Margin="100,100,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" BorderBrush="Black">
+                Background="Gray"
+                Text="Search"
+                TextAlignment="Center"
+                FontSize="65"
+                Height="100"
+                Width="500"
+                Margin="100,100,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black">
         </TextBox>
         <Button x:Name="CreateRecipe"
-            FontSize="65"
-            Height="100"
-            Width="500"
-            Margin="100,250,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top" BorderBrush="Black" Background="Gray">
+                FontSize="65"
+                Height="100"
+                Width="500"
+                Margin="100,250,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="Gray">
         </Button>
     </Grid>
 </Page>
