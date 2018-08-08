@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using RisingStarProject;
+using RisingStarProject;
 using System;
-=======
-﻿using System;
->>>>>>> master
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
