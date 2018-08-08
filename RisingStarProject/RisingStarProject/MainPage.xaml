@@ -26,7 +26,10 @@
             Width="500"
             Margin="100,250,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" BorderBrush="Black" Background="Gray">
+            VerticalAlignment="Top" 
+            BorderBrush="Black" 
+            Background="Gray"
+            Content="New Recipe">
         </Button>
     </Grid>
 </Page>
