@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RisingStarProject.IngedientModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RisingStarProject
 {
-    class IngredientFileIO
+    public class IngredientFileIO
     {
         static void ReadTXT()
         {
@@ -39,10 +40,12 @@ namespace RisingStarProject
 
         static void WriteTXT()
         {
+            Ingredient ingredient = new Ingredient();
+
             try
             {
                 StreamWriter sw = new StreamWriter("IngredientTester.txt");
-                sw.WriteLine("----Ingredients go here----");
+                sw.WriteLine(ingredient.ToString());
 
                 sw.Close();
             }
