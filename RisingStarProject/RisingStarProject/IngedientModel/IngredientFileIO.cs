@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RisingStarProject.IngedientModel
+namespace RisingStarProject
 {
     class IngredientFileIO
     {
