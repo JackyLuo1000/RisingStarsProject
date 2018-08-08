@@ -14,7 +14,7 @@ namespace RisingStarProject
             String line;
             try
             {
-                StreamReader sr = new StreamReader("C:\\RisingStarsProject\\RisingStarProject\\Ingredients\\TXTs\\IngredientTest.txt");
+                StreamReader sr = new StreamReader("IngredientTester.txt");
 
                 line = sr.ReadLine();
 
@@ -41,8 +41,8 @@ namespace RisingStarProject
         {
             try
             {
-                StreamWriter sw = new StreamWriter("C:\\RisingStarsProject\\RisingStarProject\\Ingredients\\TXTs\\IngredientTest.txt");
-                sw.WriteLine("Ingredients go here.");
+                StreamWriter sw = new StreamWriter("IngredientTester.txt");
+                sw.WriteLine("----Ingredients go here----");
 
                 sw.Close();
             }
