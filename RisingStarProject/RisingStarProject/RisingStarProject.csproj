@@ -95,8 +95,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="IngedientModel\Ingredient.cs" />
     <Compile Include="IngedientModel\IngredientFileIO.cs" />
+=======
+    <Compile Include="CreateRecipe.xaml.cs">
+      <DependentUpon>CreateRecipe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeOverview.xaml.cs">
+      <DependentUpon>RecipeOverview.xaml</DependentUpon>
+    </Compile>
+>>>>>>> master
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +134,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
+=======
+    <Page Include="CreateRecipe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecipeOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+>>>>>>> master
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
