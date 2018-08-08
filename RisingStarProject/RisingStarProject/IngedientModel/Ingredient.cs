@@ -8,22 +8,26 @@ namespace Ingredients
 {
     class Ingredient
     {
-        string Name = "";//Ex: Brown Sugar, Chicken
-        string Type = "";//Seasoning, Poultry
-        float QTY = 0;//2
-        string Measurment = "";//Ex: Tablespoon(TBS), Pounds (LB)
+        public string Name { get; set; }//Ex: Brown Sugar, Chicken.
+        public string Type { get; set; }//Seasoning, Poultry.
+        public float QTY { get; set; }//2.
+        public string Measurement { get; set; }//Ex: Tablespoon(TBS), Pounds (LB).
+
+        public Ingredient()
+        {
+        }
 
         public Ingredient(string name, string type, float qty, string measurement)
         {
             this.Name = name;
             this.Type = type;
             this.QTY = qty;
-            this.Measurment = measurement;
+            this.Measurement = measurement;
         }
 
         public override string ToString()
         {
-            return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY}{Measurment}.";
+            return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY}{Measurement}.";
         }
     }
 }
