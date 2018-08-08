@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace RisingStarProject.IngedientModel
 {
-    class IngredientV2
+    class Ingredient
     {
         public string Name { get; set; }//Ex: Brown Sugar, Chicken.
         public string Type { get; set; }//Seasoning, Poultry.
         public float QTY { get; set; }//2.
         public string Measurement { get; set; }//Ex: Tablespoon(TBS), Pounds (LB).
 
-        public IngredientV2()
+        public Ingredient()
         {
         }
 
-        public IngredientV2(string name, string type, float qty, string measurement)
+        public Ingredient(string name, string type, float qty, string measurement)
         {
             this.Name = name;
             this.Type = type;
