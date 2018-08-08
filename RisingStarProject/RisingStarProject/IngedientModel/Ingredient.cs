@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RisingStarProject.IngedientModel
 {
-    class Ingredient
+    public class Ingredient
     {
         public string Name { get; set; }//Ex: Brown Sugar, Chicken.
         public string Type { get; set; }//Seasoning, Poultry.
@@ -27,7 +27,7 @@ namespace RisingStarProject.IngedientModel
 
         public override string ToString()
         {
-            return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY}{Measurement}.";
+            return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY} {Measurement}.";
         }
     }
 }

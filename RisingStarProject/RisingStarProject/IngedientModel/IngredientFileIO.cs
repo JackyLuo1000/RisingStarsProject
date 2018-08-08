@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RisingStarProject.IngedientModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,52 +8,38 @@ using System.Threading.Tasks;
 
 namespace RisingStarProject
 {
-    class IngredientFileIO
+    public class IngredientFileIO
     {
-        static void ReadTXT()
+        public void ReadTXT()
         {
-            String line;
             try
             {
-                StreamReader sr = new StreamReader("IngredientTester.txt");
-
-                line = sr.ReadLine();
-
-                while (line != null)
+                var ingredientPath = Path.GetFileName("IngredientTester.txt");
+                using (StreamReader sr = new StreamReader(ingredientPath))
                 {
+                    String line = sr.ReadToEnd();
                     Console.WriteLine(line);
-                    line = sr.ReadLine();
                 }
-
-                sr.Close();
-                Console.ReadLine();
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("");
+                Console.WriteLine("Error, file could not be read: " + e.Message);
             }
         }
 
-        static void WriteTXT()
+        public void WriteTXT(List<Ingredient> list)
         {
             try
             {
-                StreamWriter sw = new StreamWriter("IngredientTester.txt");
-                sw.WriteLine("----Ingredients go here----");
-
-                sw.Close();
+                var ingredientPath = Path.GetFileName("IngredientTester.txt");
+                using (StreamWriter sw = new StreamWriter(ingredientPath))
+                {
+                    sw.Write(list.ToString());
+                }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("");
+                Console.WriteLine("Error, file could not be written: " + e.Message);
             }
         }
     }
