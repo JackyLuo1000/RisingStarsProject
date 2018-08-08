@@ -29,6 +29,8 @@ namespace RisingStarProject
 
         public void WriteTXT(List<Ingredient> list)
         {
+            Ingredient ingredient = new Ingredient();
+
             try
             {
                 var ingredientPath = Path.GetFileName("IngredientTester.txt");
