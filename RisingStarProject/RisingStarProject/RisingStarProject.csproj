@@ -95,8 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IngedientModel\Ingredient.cs" />
     <Compile Include="IngedientModel\IngredientFileIO.cs" />
+    <Compile Include="IngedientModel\IngredientV2.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -109,7 +109,6 @@
     <None Include="RisingStarProject_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IngedientModel\Ingredients.csproj" />
     <Content Include="IngedientModel\TXTs\IngredientTester.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
