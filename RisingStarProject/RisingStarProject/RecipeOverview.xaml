@@ -9,22 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="RecipeName"
-            Background="Gray"
-            TextAlignment="Center"
-            FontSize="100"
-            Height="150"
-            Margin="0,0,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Stretch"
-            BorderBrush="Black">
-        </TextBox>
-        <TextBlock x:Name="Ingredients"
-            Height="700"
-            Width="700"
-            TextAlignment="Center"
-            FontSize="100"
-            Margin="0,100,0,0">
-        </TextBlock>
+
     </Grid>
 </Page>
