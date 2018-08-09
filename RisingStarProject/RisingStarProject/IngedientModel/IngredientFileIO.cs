@@ -10,12 +10,11 @@ namespace RisingStarProject
 {
     public class IngredientFileIO
     {
-        public void ReadTXT()
+        public void ReadTXT(string path)
         {
             try
             {
-                var ingredientPath = Path.GetFileName("IngredientTester.txt");
-                using (StreamReader sr = new StreamReader(ingredientPath))
+                using (StreamReader sr = new StreamReader(path))
                 {
                     String line = sr.ReadToEnd();
                     Console.WriteLine(line);
@@ -27,16 +26,21 @@ namespace RisingStarProject
             }
         }
 
-        public void WriteTXT(List<Ingredient> list)
+        public void WriteTXT(string path, List<Ingredient> list)
         {
-            Ingredient ingredient = new Ingredient();
-
             try
             {
-                var ingredientPath = Path.GetFileName("IngredientTester.txt");
-                using (StreamWriter sw = new StreamWriter(ingredientPath))
+                using (StreamWriter sw = new StreamWriter(path, true))
                 {
-                    sw.Write(list.ToString());
+                    System.Collections.IList list1 = list;
+                    for (int i = 0; i < list1.Count; i++)
+                    {
+                        string obj = (string)list1[i].ToString();
+                        sw.WriteLine(obj);
+                    }
+
+                    sw.Flush();
+                    sw.Close();
                 }
             }
             catch (Exception e)
