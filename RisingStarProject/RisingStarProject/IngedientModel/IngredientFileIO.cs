@@ -30,7 +30,7 @@ namespace RisingStarProject
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter(path, true))
+                using (StreamWriter sw = (File.Exists(path)) ? File.AppendText(path) : File.CreateText(path))
                 {
                     System.Collections.IList list1 = list;
                     for (int i = 0; i < list1.Count; i++)
@@ -38,7 +38,6 @@ namespace RisingStarProject
                         string obj = (string)list1[i].ToString();
                         sw.WriteLine(obj);
                     }
-
                     sw.Flush();
                     sw.Close();
                 }

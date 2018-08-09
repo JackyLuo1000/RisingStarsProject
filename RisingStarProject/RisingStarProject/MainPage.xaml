@@ -9,7 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
         <TextBox x:Name="SearchBox"
+                Grid.Column="0"
                 Background="Gray"
                 Text="Search"
                 TextAlignment="Center"
@@ -22,6 +27,7 @@
                 BorderBrush="Black">
         </TextBox>
         <Button x:Name="CreateRecipe"
+                Grid.Column="0"
                 FontSize="65"
                 Height="100"
                 Width="500"
@@ -31,5 +37,16 @@
                 BorderBrush="Black" 
                 Background="Gray">
         </Button>
+        <Border Grid.Column="1"
+                BorderBrush="Black"
+                BorderThickness="5"
+                Margin="50 50 50 50">
+        <Canvas x:Name="ListOfRecipes"
+                Grid.Column="1"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch">
+                
+        </Canvas>
+        </Border>
     </Grid>
 </Page>
