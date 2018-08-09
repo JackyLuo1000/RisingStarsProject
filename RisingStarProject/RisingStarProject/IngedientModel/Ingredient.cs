@@ -30,4 +30,35 @@ namespace RisingStarProject.IngedientModel
             return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY} {Measurement}.";
         }
     }
+
+    /*
+     * Example for Ingredient class and IngredientFileIO:
+        static void Main(string[] args)
+        {
+            Ingredient I1 = new Ingredient();
+            I1.Name = "Diced Tomatoes";
+            I1.Type = "Vegetable";
+            I1.QTY = 1;
+            I1.Measurement = "Cup";
+
+            Ingredient I2 = new Ingredient();
+            I2.Name = "Cheese";
+            I2.Type = "Dairy";
+            I2.QTY = 0.5f;
+            I2.Measurement = "Cup";
+
+            List<Ingredient> list = new List<Ingredient>();
+            list.Add(I1);
+            list.Add(I2);
+
+            IngredientFileIO IO = new IngredientFileIO();
+            IO.WriteTXT("TestVotV2.txt", list);
+            IO.ReadTXT("TestVotV2.txt");
+
+            Console.WriteLine("\n" + I1.ToString() + " " + I2.ToString());
+
+            Console.WriteLine("\nPress any key to close command prompt: ");
+            Console.ReadKey();
+        }
+    */
 }
