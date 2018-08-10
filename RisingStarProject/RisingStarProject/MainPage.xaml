@@ -13,15 +13,26 @@
             <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
+        <TextBox x:Name="Header"
+                Background="LightGray"
+                Text="My Recipe Book"
+                IsEnabled ="false"
+                TextAlignment="Center"
+                FontSize="65"
+                Height="100"
+                Margin="0,0,0,0"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Grid.ColumnSpan="2"/>
         <TextBox x:Name="SearchBox"
                 Grid.Column="0"
-                Background="Gray"
+                Background="LightGray"
                 Text="Search"
                 TextAlignment="Center"
                 FontSize="65"
                 Height="100"
                 Width="500"
-                Margin="100,100,0,0"
+                Margin="100,150,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
                 BorderBrush="Black">
@@ -31,22 +42,22 @@
                 FontSize="65"
                 Height="100"
                 Width="500"
-                Margin="100,250,0,0"
+                Margin="100,300,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
-                Background="Gray">
+                Background="LightGray">
         </Button>
         <Border Grid.Column="1"
                 BorderBrush="Black"
                 BorderThickness="5"
-                Margin="50 50 50 50">
-        <Canvas x:Name="ListOfRecipes"
+                Margin="50 100 50 50">
+            <Canvas x:Name="ListOfRecipes"
                 Grid.Column="1"
                 VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch">
-                
-        </Canvas>
+
+            </Canvas>
         </Border>
     </Grid>
 </Page>
