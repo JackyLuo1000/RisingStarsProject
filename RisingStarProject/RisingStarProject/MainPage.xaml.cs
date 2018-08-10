@@ -27,24 +27,51 @@ namespace RisingStarProject
     {
         private List<Ingredient> ingredients = new List<Ingredient>();
         private StringBuilder sb = new StringBuilder();
+        //private List<Recipe> recipes = new List<Recipe>();
         public MainPage()
         {
             this.InitializeComponent();
+            //recipes.Add(new Recipe);
         }
 
         private void Create_Ingredients(object sender, RoutedEventArgs e)
         {
-            //Use string builder to parse info of recipe fields
-            //Store the information into proper fields
-            //Using the variable pass information to create ingredients a new ingredient
-            //Add the ingredient to the ingredients List
+            //Store the fields from text boxes
+
+            //string IngredientName = IngredientNameTextBox.Text;
+
+            //string Type = TypeTextBox.Text;
+
+            //float quantity = float.Parse(QuantityTextBox.Text);
+
+            //string measurement = MeasurementTextBox.Text;
+
+            //Create a newIngredient from the fields
+
+            //Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
+            
+            //In the recipe add the ingredient
+
+            //recipes.Last().Ingredients.Add(newIngredient);
         }
         private void Create_Recipe(object sender, RoutedEventArgs e)
         {
-            //Use string builder to parse info of recipe fields
-            //Store the information into proper fields
-            //Using the variable pass information to create ingredients a new recipe
-            //Add the recipe to the recipes List
+
+            //Store information into a new recipe
+
+            //string recipeName = RecipeNameTextBox.Text
+            //recipes.Last().Name = recipeName
+            
+            //Add a new recipe to the recipes List
+            //recipes.Add(new Recipe)
+        }
+
+        private async void Preview_Recipe(object sender, RoutedEventArgs e)
+        {
+
+            //Store information into a new recipe
+
+            //await (new MessageDialog(recipes.Last().toString()).ShowAsync())
         }
     }
 }
