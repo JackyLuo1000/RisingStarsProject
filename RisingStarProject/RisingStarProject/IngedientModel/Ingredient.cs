@@ -31,7 +31,7 @@ namespace RisingStarProject.IngedientModel
         }
     }
     /*
-     * Example for hoe to use IngredientFileIo with the Ingredient class:
+     * Example for how to use IngredientFileI/O with the Ingredient class:
         static void Main(string[] args)
         {
             Ingredient I1 = new Ingredient();
