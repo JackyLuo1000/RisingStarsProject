@@ -97,6 +97,10 @@
     </Compile>
     <Compile Include="IngedientModel\Ingredient.cs" />
     <Compile Include="IngedientModel\IngredientFileIO.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="IngedientModel\IngredientV2.cs" />
+>>>>>>> parent of 6075604... Merge branch 'master' of https://github.com/JackyLuo1000/RisingStarsProject
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
