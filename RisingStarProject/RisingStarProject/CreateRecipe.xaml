@@ -9,6 +9,75 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <TextBox x:Name="Header"
+                Background="LightGray"
+                Text="Create a Recipe"
+                TextAlignment="Center"
+                FontSize="65"
+                Height="100"
+                Margin="0,0,0,0"
+                VerticalAlignment="Top" 
+                BorderBrush="Black"
+                BorderThickness="4"/>
+        <TextBox x:Name="SearchBox"
+                Grid.Column="0"
+                Background="LightGray"
+                Text="Name of Recipe"
+                TextAlignment="Center"
+                FontSize="65"
+                Height="100"
+                Width="700"
+                Margin="100,150,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top" 
+                BorderBrush="Black">
+        </TextBox>
+        <StackPanel x:Name="Fields"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Height="100"
+                    Margin="50 350 50 0">
+            <TextBox x:Name="IngredientName"
+                     Grid.Column="0"
+                Background="LightGray"
+                Text="Name"
+                TextAlignment="Center"
+                FontSize="45"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                BorderBrush="Black">
+            </TextBox>
+            <TextBox x:Name="IngredientType"
+                     Grid.Column="0"
+                Background="LightGray"
+                Text="Type"
+                TextAlignment="Center"
+                FontSize="45"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                BorderBrush="Black">
+            </TextBox>
+            <TextBox x:Name="IngredientMeasurement"
+                     Grid.Column="0"
+                Background="LightGray"
+                Text="Measurement"
+                TextAlignment="Center"
+                FontSize="45"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                BorderBrush="Black">
+            </TextBox>
+            <TextBox x:Name="MeasurementType"
+                     Grid.Column="0"
+                Background="LightGray"
+                Text="Type of Measurement"
+                TextAlignment="Center"
+                FontSize="45"
+                Margin="0,0,0,0"
+                HorizontalAlignment="Center"
+                BorderBrush="Black">
+            </TextBox>
+        </StackPanel>
     </Grid>
 </Page>
