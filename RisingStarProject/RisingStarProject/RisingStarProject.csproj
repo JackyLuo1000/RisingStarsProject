@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="IngedientModel\Ingredient.cs" />
     <Compile Include="IngedientModel\IngredientFileIO.cs" />
-    <Compile Include="IngedientModel\Ingredient.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
