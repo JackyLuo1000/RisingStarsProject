@@ -16,7 +16,6 @@
         <TextBox x:Name="Header"
                 Background="LightGray"
                 Text="My Recipe Book"
-                IsEnabled ="false"
                 TextAlignment="Center"
                 FontSize="65"
                 Height="100"
@@ -47,11 +46,12 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
-                Background="LightGray">
+                Background="LightGray"
+                Content="New Recipe">
         </Button>
         <Border Grid.Column="1"
                 BorderBrush="Black"
-                BorderThickness="5"
+                BorderThickness="2"
                 Margin="50 100 50 50">
             <Canvas x:Name="ListOfRecipes"
                 Grid.Column="1"
