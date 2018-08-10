@@ -34,6 +34,11 @@ namespace RisingStarProject
             //recipes.Add(new Recipe);
         }
 
+        private void Create_New_Recipe(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void Create_Ingredients(object sender, RoutedEventArgs e)
         {
             //Store the fields from text boxes
