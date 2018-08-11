@@ -27,10 +27,11 @@ namespace RisingStarProject.RecipeModel
             public Recipe(string name, string type)
             {
                 this.Name = name;
-                //this.Type = type;
+                this.Type = type;
 
             }
 
+            List<Ingredient> ingredients { get; set; };
 
             public override string ToString()
             {
