@@ -47,7 +47,8 @@
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
                 Background="LightGray"
-                Content="New Recipe">
+                Content="New Recipe"
+                Tapped="CreateRecipe_Tapped">
         </Button>
         <Border Grid.Column="1"
                 BorderBrush="Black"
