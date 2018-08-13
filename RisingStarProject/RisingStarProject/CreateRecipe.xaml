@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-<<<<<<< HEAD
         <TextBox x:Name="Header"
                 Background="LightGray"
                 Text="Create a Recipe"
@@ -80,32 +79,5 @@
                 BorderBrush="Black">
             </TextBox>
         </StackPanel>
-=======
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            
-        </Grid.RowDefinitions>
-        <TextBox x:Name="RecipeNameTextBox" Grid.Column="0" Grid.ColumnSpan="6" Text="Recipe Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Width="500"/>
-        <TextBox x:Name="IngredientNameTextBox" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="Ingredient Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" />
-        <TextBox x:Name="TypeTextBox" Grid.Column="2" Grid.Row="1" Text="Type" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" />
-        <TextBox x:Name="QuantityTextBox" Grid.Column="3" Grid.Row="1" Text="Quantity" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Margin="5, 0, 5, 0" />
-        <TextBox x:Name="MeasurementTextBox" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Text="Measurement" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" />
-        <Button x:Name="AddIngredientButton" Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="2" Content="Add Ingredient" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Tapped="Create_Ingredients"/>
-        <Button x:Name="BackToMenuButtonButton" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Content="Back To Menu" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
-        <Button x:Name="PreviewRecipeButton" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" Content="Preview Recipe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Tapped="Preview_Recipe"/>
-        <Button x:Name="SaveRecipeButton" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="3" Content="Save Recipe" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" Tapped="Create_Recipe"/>
-
->>>>>>> a325fd6df59ef94cf846fa5a23d1761e99418f0b
     </Grid>
 </Page>
