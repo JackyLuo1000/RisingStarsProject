@@ -85,5 +85,10 @@ namespace RisingStarProject
             }
             base.OnNavigatedTo(e);
         }
+
+        private void BackToHomePage(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage), recipes);
+        }
     }
 }

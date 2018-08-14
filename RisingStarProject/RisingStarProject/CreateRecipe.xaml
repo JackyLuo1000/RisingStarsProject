@@ -11,7 +11,17 @@
     
     
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <TextBox x:Name="Header"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="2"
                 Background="LightGray"
                 Text="Create a Recipe"
                 TextAlignment="Center"
@@ -21,83 +31,96 @@
                 VerticalAlignment="Top" 
                 BorderBrush="Black"
                 BorderThickness="4"/>
-        <TextBox x:Name="RecipeNameTextBox"
-                Grid.Column="0"
-                Background="LightGray"
-                Text="Name of Recipe"
-                TextAlignment="Center"
-                FontSize="65"
-                Height="100"
-                Width="700"
-                Margin="0,150,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top" 
-                BorderBrush="Black">
-        </TextBox>
-        <StackPanel x:Name="Fields"
-                    Orientation="Horizontal"
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      VerticalAlignment="Stretch" 
+                      HorizontalAlignment="Stretch" 
+                      Grid.Column="0"
+                      Grid.Row="1">
+            <StackPanel x:Name="Control Panel"
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top"
+                    VerticalAlignment="Stretch"
+                    Margin="0">
+                <TextBox x:Name="RecipeNameTextBox"
+                    Background="LightGray"
+                    Text="Name of Recipe"
+                    TextAlignment="Center"
+                    FontSize="65"
                     Height="100"
-                    Margin="50 350 50 0">
-            <TextBox x:Name="IngredientNameTextBox"
-                     Grid.Column="0"
-                Background="LightGray"
-                Text="Name"
-                TextAlignment="Center"
-                FontSize="50"
-                Width="350"
-                Margin="0,0,50,0"
-                HorizontalAlignment="Center"
-                BorderBrush="Black">
-            </TextBox>
-            <TextBox x:Name="TypeTextBox"
-                     Grid.Column="0"
-                Background="LightGray"
-                Text="Type"
-                TextAlignment="Center"
-                FontSize="50"
-                Width="350"
-                Margin="0,0,50,0"
-                HorizontalAlignment="Center"
-                BorderBrush="Black">
-            </TextBox>
-            <TextBox x:Name="QuantityTextBox"
-                     Grid.Column="0"
+                    Margin="10,10,10,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top" 
+                    BorderBrush="Black">
+                </TextBox>
+
+                <TextBox x:Name="RecipeTypeTextBox"
+                    Background="LightGray"
+                    Text="Type of Recipe"
+                    TextAlignment="Center"
+                    FontSize="65"
+                    Height="100"
+                    Margin="10,10,10,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top" 
+                    BorderBrush="Black">
+                </TextBox>
+
+                <TextBox x:Name="IngredientNameTextBox"
+                    Background="LightGray"
+                    Text="Ingredient Name"
+                    TextAlignment="Center"
+                    FontSize="50"
+                     Margin="10,20,10,0"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="Black">
+                </TextBox>
+
+                <TextBox x:Name="IngredientTypeTextBox"
+                    Background="LightGray"
+                    Text="Ingredient Type"
+                    TextAlignment="Center"
+                    FontSize="50"
+                    Margin="10,20,10,0"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="Black">
+                </TextBox>
+
+                <TextBox x:Name="QuantityTextBox"
                 Background="LightGray"
                 Text="Quantity"
                 TextAlignment="Center"
                 FontSize="50"
-                Margin="0,0,50,0"
-                Width="225"
-                HorizontalAlignment="Center"
+                Margin="10,10,10,0"
+                HorizontalAlignment="Stretch"
                 BorderBrush="Black">
-            </TextBox>
-            <TextBox x:Name="MeasurementTextBox"
-                     Grid.Column="0"
+                </TextBox>
+
+                <TextBox x:Name="MeasurementTextBox"
                 Background="LightGray"
-                Text="Measurement"
+                Text="Measurement Type"
                 TextAlignment="Center"
                 FontSize="50"
-                Width="325"
-                Margin="0,0,0,0"
-                HorizontalAlignment="Center"
+                Margin="10,10,10,0"
+                HorizontalAlignment="Stretch"
                 BorderBrush="Black">
-            </TextBox>
-        </StackPanel>
-
-        <Button x:Name="Add"
+                </TextBox>
+                
+                <Button x:Name="Add"
                 FontSize="65"
                 Height="100"
                 Width="500"
-                Margin="0,200,0,0"
+                Margin="10,10,10,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center" 
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="Add Ingredient"
                 Tapped="AddIngedient_Tapped">
-        </Button>
+                </Button>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+        
 
         <StackPanel x:Name="OptionsPanel"
                     Orientation="Horizontal"
@@ -115,19 +138,8 @@
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="Back to Menu"
-                Tapped="BackToMenu_Tapped"/>
+                Tapped="BackToHomePage"/>
 
-            <Button x:Name="Preview"
-                FontSize="50"
-                Height="100"
-                Width="400"
-                Margin="0 0 100 0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="Preview"
-                Tapped="Preview_Tapped"/>
 
             <Button x:Name="SaveRecipe"
                 FontSize="50"
