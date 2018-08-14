@@ -19,7 +19,7 @@
                 VerticalAlignment="Top" 
                 BorderBrush="Black"
                 BorderThickness="4"/>
-        <TextBox x:Name="RecipeName"
+        <TextBox x:Name="RecipeNameTextBox"
                 Grid.Column="0"
                 Background="LightGray"
                 Text="Name of Recipe"
@@ -38,7 +38,7 @@
                     VerticalAlignment="Top"
                     Height="100"
                     Margin="50 350 50 0">
-            <TextBox x:Name="IngredientName"
+            <TextBox x:Name="IngredientNameTextBox"
                      Grid.Column="0"
                 Background="LightGray"
                 Text="Name"
@@ -49,7 +49,7 @@
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
-            <TextBox x:Name="IngredientType"
+            <TextBox x:Name="TypeTextBox"
                      Grid.Column="0"
                 Background="LightGray"
                 Text="Type"
@@ -60,24 +60,24 @@
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
-            <TextBox x:Name="IngredientQuantity"
+            <TextBox x:Name="QuantityTextBox"
                      Grid.Column="0"
                 Background="LightGray"
                 Text="Quantity"
                 TextAlignment="Center"
                 FontSize="50"
                 Margin="0,0,50,0"
-                Width="200"
+                Width="225"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
-            <TextBox x:Name="MeasurementType"
+            <TextBox x:Name="MeasurementTextBox"
                      Grid.Column="0"
                 Background="LightGray"
                 Text="Measurement"
                 TextAlignment="Center"
                 FontSize="50"
-                Width="350"
+                Width="325"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
