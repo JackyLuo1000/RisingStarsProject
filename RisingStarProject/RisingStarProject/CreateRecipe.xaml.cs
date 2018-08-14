@@ -68,13 +68,20 @@ namespace RisingStarProject
             recipes.Add(new Recipe());
         }
 
-        
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter is ObservableCollection<Recipe> && e.Parameter != null)
             {
-                recipes = e.Parameter as ObservableCollection<Recipe>;
+                ObservableCollection<Recipe> oldRecipes = e.Parameter as ObservableCollection<Recipe>;
+                if (oldRecipes.Count != 0)
+                {
+                    foreach (Recipe r in oldRecipes)
+                    {
+                        recipes.Add(r);
+                    }
+                }
             }
             base.OnNavigatedTo(e);
         }
