@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RisingStarProject
 {
@@ -12,12 +13,16 @@ namespace RisingStarProject
     {
         public void ReadTXT(string path)
         {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ListOfIngredients));
             try
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
-                    String line = sr.ReadToEnd();
-                    Console.WriteLine(line);
+                    ListOfIngredients line = (ListOfIngredients)xmlSerializer.Deserialize(sr);
+                    foreach (Ingredient i in line.Ingredients)
+                    {
+                        Console.WriteLine(i.ToString());
+                    }
                 }
             }
             catch (Exception e)
@@ -26,18 +31,14 @@ namespace RisingStarProject
             }
         }
 
-        public void WriteTXT(string path, List<Ingredient> list)
+        public void WriteTXT(string path, ListOfIngredients list)
         {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ListOfIngredients));
             try
             {
-                using (StreamWriter sw = (File.Exists(path)) ? File.AppendText(path) : File.CreateText(path))
+                using (StreamWriter sw = (File.CreateText(path)))
                 {
-                    System.Collections.IList list1 = list;
-                    for (int i = 0; i < list1.Count; i++)
-                    {
-                        string obj = (string)list1[i].ToString();
-                        sw.WriteLine(obj);
-                    }
+                    xmlSerializer.Serialize(sw, list);
                     sw.Flush();
                     sw.Close();
                 }

@@ -19,7 +19,7 @@
                 VerticalAlignment="Top" 
                 BorderBrush="Black"
                 BorderThickness="4"/>
-        <TextBox x:Name="SearchBox"
+        <TextBox x:Name="RecipeName"
                 Grid.Column="0"
                 Background="LightGray"
                 Text="Name of Recipe"
@@ -27,7 +27,7 @@
                 FontSize="65"
                 Height="100"
                 Width="700"
-                Margin="100,150,0,0"
+                Margin="0,150,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top" 
                 BorderBrush="Black">
@@ -43,8 +43,9 @@
                 Background="LightGray"
                 Text="Name"
                 TextAlignment="Center"
-                FontSize="45"
-                Margin="0,0,0,0"
+                FontSize="50"
+                Width="350"
+                Margin="0,0,50,0"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
@@ -53,31 +54,90 @@
                 Background="LightGray"
                 Text="Type"
                 TextAlignment="Center"
-                FontSize="45"
-                Margin="0,0,0,0"
+                FontSize="50"
+                Width="350"
+                Margin="0,0,50,0"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
-            <TextBox x:Name="IngredientMeasurement"
+            <TextBox x:Name="IngredientQuantity"
                      Grid.Column="0"
                 Background="LightGray"
-                Text="Measurement"
+                Text="Quantity"
                 TextAlignment="Center"
-                FontSize="45"
-                Margin="0,0,0,0"
+                FontSize="50"
+                Margin="0,0,50,0"
+                Width="200"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
             <TextBox x:Name="MeasurementType"
                      Grid.Column="0"
                 Background="LightGray"
-                Text="Type of Measurement"
+                Text="Measurement"
                 TextAlignment="Center"
-                FontSize="45"
+                FontSize="50"
+                Width="350"
                 Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 BorderBrush="Black">
             </TextBox>
+        </StackPanel>
+
+        <Button x:Name="Add"
+                FontSize="65"
+                Height="100"
+                Width="500"
+                Margin="0,200,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Add Ingredient"
+                Tapped="AddIngedient_Tapped">
+        </Button>
+
+        <StackPanel x:Name="OptionsPanel"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    Height="100"
+                    Margin="50 600 50 0">
+            <Button x:Name="BackToMenu"
+                FontSize="50"
+                Height="100"
+                Width="400"
+                Margin="0 0 100 0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Back to Menu"
+                Tapped="BackToMenu_Tapped"/>
+
+            <Button x:Name="Preview"
+                FontSize="50"
+                Height="100"
+                Width="400"
+                Margin="0 0 100 0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Preview"
+                Tapped="Preview_Tapped"/>
+
+            <Button x:Name="SaveRecipe"
+                FontSize="50"
+                Height="100"
+                Width="400"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Save Recipe"
+                Tapped="SaveRecipe_Tapped"/>
+
         </StackPanel>
     </Grid>
 </Page>
