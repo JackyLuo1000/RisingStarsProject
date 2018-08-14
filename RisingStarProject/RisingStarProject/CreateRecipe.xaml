@@ -37,7 +37,7 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
                     Height="100"
-                    Margin="50 350 50 0">
+                    Margin="50 300 50 0">
             <TextBox x:Name="IngredientNameTextBox"
                      Grid.Column="0"
                 Background="LightGray"
@@ -88,7 +88,7 @@
                 FontSize="65"
                 Height="100"
                 Width="500"
-                Margin="0,200,0,0"
+                Margin="0,0,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center" 
                 BorderBrush="Black" 
@@ -100,32 +100,20 @@
         <StackPanel x:Name="OptionsPanel"
                     Orientation="Horizontal"
                     HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Bottom"
                     Height="100"
-                    Margin="50 600 50 0">
+                    Margin="250 0 250 50">
             <Button x:Name="BackToMenu"
                 FontSize="50"
                 Height="100"
                 Width="400"
-                Margin="0 0 100 0"
-                HorizontalAlignment="Center"
+                Margin="0 0 200 0"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Center" 
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="Back to Menu"
                 Tapped="BackToMenu_Tapped"/>
-
-            <Button x:Name="Preview"
-                FontSize="50"
-                Height="100"
-                Width="400"
-                Margin="0 0 100 0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="Preview"
-                Tapped="Preview_Tapped"/>
 
             <Button x:Name="SaveRecipe"
                 FontSize="50"
