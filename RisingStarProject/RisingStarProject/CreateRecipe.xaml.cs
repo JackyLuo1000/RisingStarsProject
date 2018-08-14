@@ -1,6 +1,7 @@
 ﻿using RisingStarProject.IngedientModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,7 +29,7 @@ namespace RisingStarProject
     {
         private List<Ingredient> ingredients = new List<Ingredient>();
         private StringBuilder sb = new StringBuilder();
-        private List<Recipe> recipes = new List<Recipe>();
+        private ObservableCollection<Recipe> recipes;
         public CreateRecipe()
         {
             this.InitializeComponent();
@@ -67,14 +68,15 @@ namespace RisingStarProject
             recipes.Add(new Recipe());
         }
 
-        private async void Preview_Recipe(object sender, TappedRoutedEventArgs e)
-        {
+        
 
-            //Store information into a new recipe
-            string recipeName = RecipeNameTextBox.Text;
-            recipes.Last().Name = recipeName;
-            MessageDialog md = new MessageDialog(recipes[recipes.Count()-1].ToString());
-            await md.ShowAsync();
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is ObservableCollection<Recipe> && e.Parameter != null)
+            {
+                recipes = e.Parameter as ObservableCollection<Recipe>;
+            }
+            base.OnNavigatedTo(e);
         }
     }
 }

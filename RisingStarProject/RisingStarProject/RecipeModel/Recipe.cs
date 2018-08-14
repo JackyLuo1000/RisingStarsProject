@@ -15,7 +15,7 @@ namespace RisingStarProject.RecipeModel
 
             private StringBuilder sb = new StringBuilder();
             public string Name { get; set; }
-            //public string Type { get; set; }
+            public string Type { get; set; }
             public List<Ingredient> Ingredients { get; set; }
 
             public Recipe()
@@ -27,11 +27,10 @@ namespace RisingStarProject.RecipeModel
             public Recipe(string name, string type)
             {
                 this.Name = name;
-                this.Type = type;
+                //this.Type = type;
 
             }
-
-            List<Ingredient> ingredients { get; set; };
+            
 
             public override string ToString()
             {
