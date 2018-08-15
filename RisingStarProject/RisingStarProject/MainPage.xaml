@@ -68,13 +68,10 @@
                 Background="LightGray">
             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E4;"/>
                 <Button.Flyout>
-                <MenuFlyout Placement="Left">
-                    <MenuFlyoutItem Name="mfiName" Text="Right" Icon="AlignRight" Tag="right"
-                            Click=""/>
-                        <MenuFlyoutItem Name="mfiIngredient" Text="Right" Icon="AlignRight" Tag="right"
-                            Click=""/>
-                        <MenuFlyoutItem Name="mfiType" Text="Right" Icon="AlignRight" Tag="right"
-                            Click=""/>
+                    <MenuFlyout Placement="Left">
+                        <MenuFlyoutItem Name="mfiName" Text="Name" Icon="AlignRight" Click="Name_Search_Click" />
+                        <MenuFlyoutItem Name="mfiIngredient" Text="Ingredient" Icon="AlignRight" Click="Ingredient_Search_Click"/>
+                        <MenuFlyoutItem Name="mfiType" Text="Type" Icon="AlignRight" Click="Type_Search_Click" />
                     </MenuFlyout>
                 </Button.Flyout>
         </Button>
@@ -89,7 +86,8 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
-                Background="LightGray"
+                Background="LightGray" 
+                Click="Search_Click"
                 >
         </Button>
         
@@ -97,7 +95,7 @@
                  Grid.Column="1"
                  BorderBrush="Black"
                  BorderThickness="2"
-                 Margin="20 115 20 20">
+                 Margin="20 115 20 20" Loaded="Recipe_Display">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -106,7 +104,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Button Content="" Grid.Column="0" Click=""></Button>
+                        <Button Content="" Grid.Column="0" ></Button>
                         <TextBlock Text="{Binding}" Grid.Column="1"></TextBlock >
                     </Grid>
                 </DataTemplate>
