@@ -15,35 +15,34 @@ namespace RisingStarProject.RecipeModel
 
             private StringBuilder sb = new StringBuilder();
             public string Name { get; set; }
-            //public string Type { get; set; }
+            public string Type { get; set; }
             public List<Ingredient> Ingredients { get; set; }
 
             public Recipe()
             {
                 Name = "Recipe";
+                Type = "Type";
                 Ingredients = new List<Ingredient>();
             }
 
             public Recipe(string name, string type)
             {
-                this.Name = name;
-                this.Type = type;
-
+                Name = name;
+                Type = type;
             }
-
-            List<Ingredient> ingredients { get; set; };
+            
 
             public override string ToString()
             {
-                if (!Name.Equals(""))
+                if (!string.IsNullOrEmpty(Name))
                 {
                     sb.AppendLine($"Recipe Name: {Name}");
                 }
-                //if (!Type.Equals(""))
-                //{
-                //    sb.AppendLine($"Recipe Type: {Name}");
-                //}
-                if(Ingredients.Count() != 0)
+                if (!string.IsNullOrEmpty(Type))
+                {
+                    sb.AppendLine($"Recipe Type: {Name}");
+                }
+                if (Ingredients != null && Ingredients.Count() != 0)
                 {
                     foreach(Ingredient i in Ingredients)
                     {

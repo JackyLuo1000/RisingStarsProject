@@ -2,6 +2,7 @@ using RisingStarProject;
 using RisingStarProject.IngedientModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -15,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static RisingStarProject.RecipeModel.Program;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,7 +27,7 @@ namespace RisingStarProject
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        
+        ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         public MainPage()
         {
             this.InitializeComponent();
@@ -34,7 +36,23 @@ namespace RisingStarProject
 
         private void CreateRecipe_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CreateRecipe), null);
+            this.Frame.Navigate(typeof(CreateRecipe), recipes);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is ObservableCollection<Recipe> && e.Parameter != null)
+            {
+                ObservableCollection<Recipe> oldRecipes = e.Parameter as ObservableCollection<Recipe>;
+                if(oldRecipes.Count != 0)
+                {
+                    foreach (Recipe r in oldRecipes)
+                    {
+                        recipes.Add(r);
+                    }
+                }
+            }
+            base.OnNavigatedTo(e);
         }
     }
 }
