@@ -36,10 +36,12 @@ namespace RisingStarProject
         {
             this.InitializeComponent();
             RecipeDisplay.ItemsSource = recipes;
+            recipes.Add(recipe);
         }
 
         private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            recipes.RemoveAt(recipes.Count-1);
             //Store the fields from text boxes
 
             string ingredientName = IngredientNameTextBox.Text;
@@ -57,10 +59,12 @@ namespace RisingStarProject
             //In the recipe add the ingredient
             recipe.Ingredients.Add(newIngredient);
 
-            IngredientNameTextBox.Text = "Ingredient Name";
-            IngredientTypeTextBox.Text = "Ingredient Type";
-            QuantityTextBox.Text = "Ingredient Quantity";
-            MeasurementTextBox.Text = "Measurement Type";
+            recipes.Add(recipe);
+
+            IngredientNameTextBox.Text = "";
+            IngredientTypeTextBox.Text = "";
+            QuantityTextBox.Text = "";
+            MeasurementTextBox.Text = "";
         }
         private void SaveRecipe_Tapped(object sender, TappedRoutedEventArgs e)
         {
@@ -69,17 +73,18 @@ namespace RisingStarProject
 
             string recipeName = RecipeNameTextBox.Text;
             string recipeType = RecipeTypeTextBox.Text;
-            recipe.Name = recipeName;
-            recipe.Type = recipeType;
+            recipes.Last().Name = recipeName;
+            recipes.Last().Type = recipeType;
+
+            //recipes.Add(recipe);
 
             //Add a new recipe to the recipes List
-            recipes.Add(recipe);
-            RecipeNameTextBox.Text = "Recipe Name";
-            RecipeTypeTextBox.Text = "Recipe Type";
-            recipe = new Recipe();
+            RecipeNameTextBox.Text = "";
+            RecipeTypeTextBox.Text = "";
+            //recipe.Name = "";
+            //recipe.Type = "";
+            //recipe.Ingredients = new List<Ingredient>();
         }
-
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

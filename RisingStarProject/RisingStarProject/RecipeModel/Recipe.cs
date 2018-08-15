@@ -13,7 +13,6 @@ namespace RisingStarProject.RecipeModel
         public class Recipe
         {
 
-            private StringBuilder sb = new StringBuilder();
             public string Name { get; set; }
             public string Type { get; set; }
             public List<Ingredient> Ingredients { get; set; }
@@ -34,6 +33,9 @@ namespace RisingStarProject.RecipeModel
 
             public override string ToString()
             {
+
+
+                StringBuilder sb = new StringBuilder();
                 if (!string.IsNullOrEmpty(Name))
                 {
                     sb.AppendLine($"Recipe Name: {Name}");

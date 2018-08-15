@@ -19,19 +19,23 @@
             <RowDefinition Height="100"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="Header"
-                 Grid.Column="0"
-                 Grid.ColumnSpan="2"
-                 Grid.Row="0"
-                Background="LightGray"
-                Text="Create a Recipe"
-                TextAlignment="Center"
-                FontSize="65"
-                Height="100"
-                Margin="0,0,0,0"
-                VerticalAlignment="Top" 
-                BorderBrush="Black"
-                BorderThickness="4"/>
+        
+        <Border BorderBrush="Black"
+                BorderThickness="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch"
+                Background="LightGray">
+            <TextBlock x:Name="Header"
+                    Text="Create a Recipe"
+                    TextAlignment="Center"
+                    FontSize="65"
+                    Height="100"
+                    Margin="0,0,0,0"
+                    VerticalAlignment="Top"/>
+        </Border>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" 
                       VerticalAlignment="Stretch" 
@@ -47,19 +51,19 @@
 
                 <TextBox x:Name="RecipeNameTextBox"
                         Background="LightGray"
-                        Text="Name of Recipe"
+                        PlaceholderText="Name of Recipe"
                         TextAlignment="Center"
                         FontSize="65"
                         Height="100"
                         Margin="10,10,10,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top" 
-                        BorderBrush="Black">
+                        BorderBrush="Black" >
                 </TextBox>
 
                 <TextBox x:Name="RecipeTypeTextBox"
                         Background="LightGray"
-                        Text="Type of Recipe"
+                        PlaceholderText="Type of Recipe"
                         TextAlignment="Center"
                         FontSize="65"
                         Height="100"
@@ -71,7 +75,7 @@
 
                 <TextBox x:Name="IngredientNameTextBox"
                         Background="LightGray"
-                        Text="Name"
+                        PlaceholderText="Name"
                         TextAlignment="Center"
                         FontSize="50"
                         Margin="10,10,10,0"
@@ -81,7 +85,7 @@
 
                 <TextBox x:Name="IngredientTypeTextBox"
                         Background="LightGray"
-                        Text="Type"
+                        PlaceholderText="Type"
                         TextAlignment="Center"
                         FontSize="50"
                         Margin="10,10,10,0"
@@ -90,7 +94,7 @@
                 </TextBox>
                 <TextBox x:Name="QuantityTextBox"
                         Background="LightGray"
-                        Text="Quantity"
+                        PlaceholderText="Quantity"
                         TextAlignment="Center"
                         FontSize="50"
                         Margin="10,10,10,0"
@@ -99,7 +103,7 @@
                 </TextBox>
                 <TextBox x:Name="MeasurementTextBox"
                         Background="LightGray"
-                        Text="Measurement"
+                        PlaceholderText="Measurement"
                         TextAlignment="Center"
                         FontSize="50"
                         Margin="10,10,10,0"
