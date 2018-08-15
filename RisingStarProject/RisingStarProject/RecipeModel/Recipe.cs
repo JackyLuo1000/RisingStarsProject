@@ -21,28 +21,28 @@ namespace RisingStarProject.RecipeModel
             public Recipe()
             {
                 Name = "Recipe";
+                Type = "Type";
                 Ingredients = new List<Ingredient>();
             }
 
             public Recipe(string name, string type)
             {
-                this.Name = name;
-                //this.Type = type;
-
+                Name = name;
+                Type = type;
             }
             
 
             public override string ToString()
             {
-                if (!Name.Equals(""))
+                if (!string.IsNullOrEmpty(Name))
                 {
                     sb.AppendLine($"Recipe Name: {Name}");
                 }
-                //if (!Type.Equals(""))
-                //{
-                //    sb.AppendLine($"Recipe Type: {Name}");
-                //}
-                if(Ingredients.Count() != 0)
+                if (!string.IsNullOrEmpty(Type))
+                {
+                    sb.AppendLine($"Recipe Type: {Name}");
+                }
+                if (Ingredients != null && Ingredients.Count() != 0)
                 {
                     foreach(Ingredient i in Ingredients)
                     {

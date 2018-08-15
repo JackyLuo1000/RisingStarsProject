@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    
-    
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -41,117 +41,122 @@
                     VerticalAlignment="Stretch"
                     Margin="0">
                 <TextBox x:Name="RecipeNameTextBox"
-                    Background="LightGray"
-                    Text="Name of Recipe"
-                    TextAlignment="Center"
-                    FontSize="65"
-                    Height="100"
-                    Margin="10,10,10,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top" 
-                    BorderBrush="Black">
+                        Background="LightGray"
+                        Text="Name of Recipe"
+                        TextAlignment="Center"
+                        FontSize="65"
+                        Height="100"
+                        Margin="10,10,10,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top" 
+                        BorderBrush="Black">
                 </TextBox>
 
                 <TextBox x:Name="RecipeTypeTextBox"
-                    Background="LightGray"
-                    Text="Type of Recipe"
-                    TextAlignment="Center"
-                    FontSize="65"
-                    Height="100"
-                    Margin="10,10,10,0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Top" 
-                    BorderBrush="Black">
+                        Background="LightGray"
+                        Text="Type of Recipe"
+                        TextAlignment="Center"
+                        FontSize="65"
+                        Height="100"
+                        Margin="10,10,10,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top" 
+                        BorderBrush="Black">
                 </TextBox>
 
                 <TextBox x:Name="IngredientNameTextBox"
-                    Background="LightGray"
-                    Text="Ingredient Name"
-                    TextAlignment="Center"
-                    FontSize="50"
-                     Margin="10,20,10,0"
-                    HorizontalAlignment="Stretch"
-                    BorderBrush="Black">
+                        Background="LightGray"
+                        Text="Ingredient Name"
+                        TextAlignment="Center"
+                        FontSize="50"
+                         Margin="10,10,10,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="Black">
                 </TextBox>
 
                 <TextBox x:Name="IngredientTypeTextBox"
+                        Background="LightGray"
+                        Text="Ingredient Type"
+                        TextAlignment="Center"
+                        FontSize="50"
+                        Margin="10,10,10,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="Black">
+                </TextBox>
+
+                <TextBox x:Name="QuantityTextBox"
                     Background="LightGray"
-                    Text="Ingredient Type"
+                    Text="Quantity"
                     TextAlignment="Center"
                     FontSize="50"
-                    Margin="10,20,10,0"
+                    Margin="10,10,10,0"
                     HorizontalAlignment="Stretch"
                     BorderBrush="Black">
                 </TextBox>
 
-                <TextBox x:Name="QuantityTextBox"
-                Background="LightGray"
-                Text="Quantity"
-                TextAlignment="Center"
-                FontSize="50"
-                Margin="10,10,10,0"
-                HorizontalAlignment="Stretch"
-                BorderBrush="Black">
+                <TextBox x:Name="MeasurementTextBox"
+                    Background="LightGray"
+                    Text="Measurement Type"
+                    TextAlignment="Center"
+                    FontSize="50"
+                    Margin="10,10,10,0"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="Black">
                 </TextBox>
 
-                <TextBox x:Name="MeasurementTextBox"
-                Background="LightGray"
-                Text="Measurement Type"
-                TextAlignment="Center"
-                FontSize="50"
-                Margin="10,10,10,0"
-                HorizontalAlignment="Stretch"
-                BorderBrush="Black">
-                </TextBox>
-                
                 <Button x:Name="Add"
-                FontSize="65"
-                Height="100"
-                Width="500"
-                Margin="10,10,10,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="Add Ingredient"
-                Tapped="AddIngedient_Tapped">
-                </Button>
+                    FontSize="50"
+                    Height="100"
+                    Width="500"
+                    Margin="10,10,10,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    BorderBrush="Black" 
+                    Background="LightGray"
+                    Content="Add Ingredient"
+                    Tapped="AddIngedient_Tapped"/>
                 
+                <Button x:Name="BackToMenu"
+                    FontSize="50"
+                    Height="100"
+                    Width="500"
+                    Margin="10, 10, 10, 0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    BorderBrush="Black" 
+                    Background="LightGray"
+                    Content="Back to Menu"
+                    Tapped="BackToHomePage"/>
+
+                <Button x:Name="SaveRecipe"
+                    FontSize="50"
+                    Height="100"
+                    Width="500"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    BorderBrush="Black" 
+                    Background="LightGray"
+                    Content="Save Recipe"
+                    Tapped="SaveRecipe_Tapped"/>
             </StackPanel>
         </ScrollViewer>
 
-        
+        <ScrollViewer VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      Margin="0"
+                      Padding="0"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
 
-        <StackPanel x:Name="OptionsPanel"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    Height="100"
-                    Margin="50 600 50 0">
-            <Button x:Name="BackToMenu"
-                FontSize="50"
-                Height="100"
-                Width="400"
-                Margin="0 0 100 0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="Back to Menu"
-                Tapped="BackToHomePage"/>
-
-
-            <Button x:Name="SaveRecipe"
-                FontSize="50"
-                Height="100"
-                Width="400"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="Save Recipe"
-                Tapped="SaveRecipe_Tapped"/>
-
-        </StackPanel>
+            <ListView x:Name="RecipeDisplay"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      Margin="20"
+                      BorderBrush="Black"
+                      BorderThickness="2">
+                
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

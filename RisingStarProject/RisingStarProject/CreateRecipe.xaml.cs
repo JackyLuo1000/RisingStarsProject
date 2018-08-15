@@ -29,11 +29,12 @@ namespace RisingStarProject
     {
         private List<Ingredient> ingredients = new List<Ingredient>();
         private StringBuilder sb = new StringBuilder();
-        private ObservableCollection<Recipe> recipes;
+        private ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
+        private Recipe recipe = new Recipe();
         public CreateRecipe()
         {
             this.InitializeComponent();
-            recipes.Add(new Recipe());
+            RecipeDisplay.ItemsSource = recipes;
         }
 
         private void Create_Ingredients(object sender, TappedRoutedEventArgs e)
@@ -42,7 +43,7 @@ namespace RisingStarProject
 
             string ingredientName = IngredientNameTextBox.Text;
 
-            string type = TypeTextBox.Text;
+            string type = IngredientTypeTextBox.Text;
 
             float quantity = float.Parse(QuantityTextBox.Text);
 
@@ -53,8 +54,12 @@ namespace RisingStarProject
             Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
 
             //In the recipe add the ingredient
+            recipe.Ingredients.Add(newIngredient);
 
-            recipes.Last().Ingredients.Add(newIngredient);
+            IngredientNameTextBox.Text = "Ingredient Name";
+            IngredientTypeTextBox.Text = "Ingredient Type";
+            QuantityTextBox.Text = "Ingredient Quantity";
+            MeasurementTextBox.Text = "Measurement Type";
         }
         private void Create_Recipe(object sender, TappedRoutedEventArgs e)
         {
@@ -62,10 +67,15 @@ namespace RisingStarProject
             //Store information into a new recipe
 
             string recipeName = RecipeNameTextBox.Text;
-            recipes.Last().Name = recipeName;
+            string recipeType = RecipeTypeTextBox.Text;
+            recipe.Name = recipeName;
+            recipe.Type = recipeType;
 
             //Add a new recipe to the recipes List
-            recipes.Add(new Recipe());
+            recipes.Add(recipe);
+            RecipeNameTextBox.Text = "Recipe Name";
+            RecipeTypeTextBox.Text = "Recipe Type";
+            recipe = new Recipe();
         }
 
 
