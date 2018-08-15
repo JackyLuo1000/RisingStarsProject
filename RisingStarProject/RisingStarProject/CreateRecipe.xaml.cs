@@ -31,6 +31,7 @@ namespace RisingStarProject
         private StringBuilder sb = new StringBuilder();
         private ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         private Recipe recipe = new Recipe();
+        private ObservableCollection<Recipe> oldRecipes = new ObservableCollection<Recipe>();
         public CreateRecipe()
         {
             this.InitializeComponent();
@@ -96,7 +97,7 @@ namespace RisingStarProject
             base.OnNavigatedTo(e);
         }
 
-        private void BackToHomePage(object sender, TappedRoutedEventArgs e)
+        private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage), recipes);
         }
