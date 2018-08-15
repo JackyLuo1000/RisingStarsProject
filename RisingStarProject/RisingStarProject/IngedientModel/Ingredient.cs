@@ -51,7 +51,7 @@ namespace RisingStarProject.IngedientModel
             I1.Name = "Diced Tomatoes";
             I1.Type = "Fruit";
             I1.QTY = 1;
-            I1.Measurement = "Cup";
+            I1.Measurement = "Cup"; 
 
             Ingredient I2 = new Ingredient();
             I2.Name = "Sliced Jalapenos";
