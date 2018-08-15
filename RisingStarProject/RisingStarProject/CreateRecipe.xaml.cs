@@ -37,7 +37,7 @@ namespace RisingStarProject
             RecipeDisplay.ItemsSource = recipes;
         }
 
-        private void Create_Ingredients(object sender, TappedRoutedEventArgs e)
+        private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
             //Store the fields from text boxes
 
@@ -61,7 +61,7 @@ namespace RisingStarProject
             QuantityTextBox.Text = "Ingredient Quantity";
             MeasurementTextBox.Text = "Measurement Type";
         }
-        private void Create_Recipe(object sender, TappedRoutedEventArgs e)
+        private void SaveRecipe_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
             //Store information into a new recipe

@@ -36,7 +36,7 @@
                       HorizontalAlignment="Stretch" 
                       Grid.Column="0"
                       Grid.Row="1">
-            <StackPanel x:Name="Control Panel"
+            <StackPanel x:Name="CreationControlPanel"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Margin="0">
@@ -104,7 +104,7 @@
                     BorderBrush="Black">
                 </TextBox>
 
-                <Button x:Name="Add"
+                <Button x:Name="AddIngredient"
                     FontSize="50"
                     Height="100"
                     Width="500"
