@@ -55,26 +55,68 @@ namespace RisingStarProject
             base.OnNavigatedTo(e);
         }
 
+        private void OpenRecipe_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            //This is a test recipe
+            Ingredient I1 = new Ingredient();
+            I1.Name = "Diced Tomatoes";
+            I1.Type = "Fruit";
+            I1.QTY = 1;
+            I1.Measurement = "Cup";
+
+            Ingredient I2 = new Ingredient();
+            I2.Name = "Sliced Jalapenos";
+            I2.Type = "Fruit";
+            I2.QTY = 0.5f;
+            I2.Measurement = "Cup";
+
+            Ingredient I3 = new Ingredient();
+            I3.Name = "Roasted Diced Tomatillo";
+            I3.Type = "Fruit";
+            I3.QTY = 0.25f;
+            I3.Measurement = "Cup";
+
+            List<Ingredient> ingredients = new List<Ingredient>
+            {
+                I1, I2, I3
+            };
+
+
+            Recipe SelectedRecipe = new Recipe();
+            SelectedRecipe.Name = "Oven Baked Chicken";
+            SelectedRecipe.Type = "Main Dish";
+            //SelectedRecipe.Ingredients = ingredients;
+
+            //Add logic for setting SelectedRecipe to the currently selected recipe
+
+            this.Frame.Navigate(typeof(MainPage), SelectedRecipe);
+        }
+
+        //Search Filter.
         private void Name_Search_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //Search Filter.
         private void Ingredient_Search_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //Search Filter.
         private void Type_Search_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //Search Button Click.
         private void Search_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
+        //ListBox that will display the recipes.
         private void Recipe_Display(object sender, RoutedEventArgs e)
         {
 

@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using static RisingStarProject.RecipeModel.Program;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,16 @@ namespace RisingStarProject
         public RecipePage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Recipe newRecipe = e.Parameter as Recipe;
+            if (newRecipe != null)
+            {
+                Header.Text = newRecipe.Name;
+                //ContactCollection.Add(newRecipe);
+            }
         }
     }
 }
