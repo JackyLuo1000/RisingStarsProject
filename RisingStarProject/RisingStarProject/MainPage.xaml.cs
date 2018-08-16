@@ -54,5 +54,30 @@ namespace RisingStarProject
             }
             base.OnNavigatedTo(e);
         }
+
+        private void Name_Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ingredient_Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Type_Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Recipe_Display(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

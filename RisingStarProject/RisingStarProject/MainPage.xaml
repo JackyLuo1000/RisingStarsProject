@@ -24,42 +24,91 @@
                 BorderBrush="Black"
                 BorderThickness="4"
                 Grid.ColumnSpan="2"/>
-        <TextBox x:Name="SearchBox"
+        
+        <TextBox x:Name="Search"
                 Grid.Column="0"
-                Background="LightGray"
+                Background="White"
                 Text="Search"
-                TextAlignment="Center"
+                TextAlignment="Left"
                 FontSize="65"
                 Height="100"
-                Width="500"
-                Margin="100,150,0,0"
+                Width="400"
+                Margin="170,150,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
-                BorderBrush="Black">
+                BorderBrush="Black"
+                 >
         </TextBox>
+        
         <Button x:Name="CreateRecipe"
                 Grid.Column="0"
                 FontSize="65"
                 Height="100"
-                Width="500"
-                Margin="100,300,0,0"
+                Width="520"
+                Margin="170,300,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="New Recipe"
-                Tapped="CreateRecipe_Tapped">
+                Tapped="CreateRecipe_Tapped"
+                >
         </Button>
-        <Border Grid.Column="1"
-                BorderBrush="Black"
-                BorderThickness="2"
-                Margin="50 100 50 50">
-            <Canvas x:Name="ListOfRecipes"
-                Grid.Column="1"
-                VerticalAlignment="Stretch"
-                HorizontalAlignment="Stretch">
+        
+        <Button ToolTipService.ToolTip="Alignment"
+                Name="btnList" 
+                Grid.Column="0" 
+                Margin="50,150,0,0"
+                FontSize="65"
+                Height="100"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="LightGray">
+            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E4;"/>
+                <Button.Flyout>
+                    <MenuFlyout Placement="Left">
+                        <MenuFlyoutItem Name="mfiName" Text="Name" Icon="AlignRight" Click="Name_Search_Click" />
+                        <MenuFlyoutItem Name="mfiIngredient" Text="Ingredient" Icon="AlignRight" Click="Ingredient_Search_Click"/>
+                        <MenuFlyoutItem Name="mfiType" Text="Type" Icon="AlignRight" Click="Type_Search_Click" />
+                    </MenuFlyout>
+                </Button.Flyout>
+        </Button>
 
-            </Canvas>
-        </Border>
+        <Button Name="btnSearch" 
+                Content="⌕"
+                Grid.Column="0" 
+                Margin="590,150,0,0"
+                FontSize="65"
+                Height="100"
+                Width="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="LightGray" 
+                Click="Search_Click"
+                >
+        </Button>
+        
+        <ListBox Name="lbDisplay"
+                 Grid.Column="1"
+                 BorderBrush="Black"
+                 BorderThickness="2"
+                 Margin="20 115 20 20" Loaded="Recipe_Display">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="" Grid.Column="0" ></Button>
+                        <TextBlock Text="{Binding}" Grid.Column="1"></TextBlock >
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>
