@@ -27,21 +27,21 @@ namespace RisingStarProject
     /// </summary>
     public sealed partial class CreateRecipe : Page
     {
-        private List<Ingredient> ingredients = new List<Ingredient>();
+        private ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>();
         private StringBuilder sb = new StringBuilder();
         private ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         private Recipe recipe = new Recipe();
         private ObservableCollection<Recipe> oldRecipes = new ObservableCollection<Recipe>();
+        private int recipeIndex = 0;
+        private int ingredientIndex = 0;
         public CreateRecipe()
         {
             this.InitializeComponent();
             RecipeDisplay.ItemsSource = recipes;
-            recipes.Add(recipe);
         }
 
         private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            recipes.RemoveAt(recipes.Count-1);
             //Store the fields from text boxes
 
             string ingredientName = IngredientNameTextBox.Text;
@@ -57,10 +57,8 @@ namespace RisingStarProject
             Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
 
             //In the recipe add the ingredient
-            recipe.Ingredients.Add(newIngredient);
-
-            recipes.Add(recipe);
-
+            recipes[recipeIndex].Ingredients.Add(newIngredient);
+            
             IngredientNameTextBox.Text = "";
             IngredientTypeTextBox.Text = "";
             QuantityTextBox.Text = "";
@@ -71,19 +69,13 @@ namespace RisingStarProject
 
             //Store information into a new recipe
 
-            string recipeName = RecipeNameTextBox.Text;
-            string recipeType = RecipeTypeTextBox.Text;
-            recipes.Last().Name = recipeName;
-            recipes.Last().Type = recipeType;
+            recipes.Add(new Recipe());
+            recipeIndex++;
 
-            //recipes.Add(recipe);
 
             //Add a new recipe to the recipes List
-            RecipeNameTextBox.Text = "";
-            RecipeTypeTextBox.Text = "";
-            //recipe.Name = "";
-            //recipe.Type = "";
-            //recipe.Ingredients = new List<Ingredient>();
+            RecipeNameTextBox.Text = "New Recipe";
+            RecipeTypeTextBox.Text = "New Recipe Type";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -98,13 +90,38 @@ namespace RisingStarProject
                         recipes.Add(r);
                     }
                 }
+                else
+                {
+                    recipes.Add(new Recipe());
+                }
             }
             base.OnNavigatedTo(e);
         }
 
         private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            if(recipes.Last().Name == "New Recipe" && recipes.Last().Type == "New Recipe Type")
+            {
+                recipes.RemoveAt(recipes.Count - 1);
+            }
             this.Frame.Navigate(typeof(MainPage), recipes);
+        }
+
+        private void RecipeNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           string recipeName = RecipeNameTextBox.Text;
+            recipes[recipeIndex].Name = recipeName;
+        }
+
+        private void RecipeTypeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string recipeType = RecipeTypeTextBox.Text;
+            recipes[recipeIndex].Type = recipeType;
+        }
+
+        private void RecipeDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
