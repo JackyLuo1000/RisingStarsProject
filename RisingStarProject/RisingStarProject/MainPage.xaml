@@ -36,7 +36,8 @@
                 Margin="170,150,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
-                BorderBrush="Black"
+                BorderBrush="Black" TextChanged="Search_TextChanged"
+                
                  >
         </TextBox>
         

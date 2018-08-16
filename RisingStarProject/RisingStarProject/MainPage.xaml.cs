@@ -119,6 +119,19 @@ namespace RisingStarProject
         //ListBox that will display the recipes.
         private void Recipe_Display(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Recipe> OC =  new ObservableCollection<Recipe>();
+            if (OC.Count != 0)
+            {
+                foreach (Recipe r in OC)
+                {
+                    recipes.Add(r);
+                }
+            }
+        }
+
+        //TextBox Search-bar.
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
 
         }
     }
