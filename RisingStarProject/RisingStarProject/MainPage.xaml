@@ -25,7 +25,7 @@
                 BorderThickness="4"
                 Grid.ColumnSpan="2"/>
         
-        <TextBox x:Name="Search"
+        <TextBox x:Name="tbxSearch"
                 Grid.Column="0"
                 Background="White"
                 Text="Search"
@@ -36,11 +36,12 @@
                 Margin="170,150,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top" 
-                BorderBrush="Black"
+                BorderBrush="Black" 
+                 TextChanged="Search_TextChanged"
                  >
         </TextBox>
         
-        <Button x:Name="CreateRecipe"
+        <Button x:Name="btnCreateRecipe"
                 Grid.Column="0"
                 FontSize="65"
                 Height="100"
@@ -90,25 +91,14 @@
                 Click="Search_Click"
                 >
         </Button>
-        
-        <ListBox Name="lbDisplay"
+
+        <ListBox Name="lbxDisplay"
                  Grid.Column="1"
                  BorderBrush="Black"
                  BorderThickness="2"
-                 Margin="20 115 20 20" Loaded="Recipe_Display">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Button Content="" Grid.Column="0" ></Button>
-                        <TextBlock Text="{Binding}" Grid.Column="1"></TextBlock >
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+                 Margin="20 115 20 20" 
+                 Loaded="Recipe_Display" 
+                 SelectionMode="Extended">
         </ListBox>
     </Grid>
 </Page>
