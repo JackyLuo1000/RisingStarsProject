@@ -58,7 +58,8 @@
                         Margin="10,10,10,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top" 
-                        BorderBrush="Black" >
+                        BorderBrush="Black" 
+                         TextChanged="RecipeNameTextBox_TextChanged">
                 </TextBox>
 
                 <TextBox x:Name="RecipeTypeTextBox"
@@ -70,7 +71,8 @@
                         Margin="10,10,10,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Top" 
-                        BorderBrush="Black">
+                        BorderBrush="Black"
+                         TextChanged="RecipeTypeTextBox_TextChanged">
                 </TextBox>
 
                 <TextBox x:Name="IngredientNameTextBox"
@@ -159,8 +161,19 @@
                       VerticalAlignment="Stretch"
                       Margin="20"
                       BorderBrush="Black"
-                      BorderThickness="2">
-
+                      BorderThickness="2"
+                      SelectionChanged="RecipeDisplay_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=Type}"/>
+                            <ListView ItemsSource="{Binding Ingredients}">
+                                
+                            </ListView>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </ScrollViewer>
     </Grid>

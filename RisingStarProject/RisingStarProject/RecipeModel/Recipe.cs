@@ -1,7 +1,10 @@
 ﻿using RisingStarProject.IngedientModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,18 +13,36 @@ namespace RisingStarProject.RecipeModel
   class Program
     {
         [Serializable]
-        public class Recipe
+        public class Recipe : INotifyPropertyChanged
         {
 
-            public string Name { get; set; }
-            public string Type { get; set; }
-            public List<Ingredient> Ingredients { get; set; }
+            private string name;
+            private string type;
+            public string Name
+            {
+                get { return name; }
+                set
+                {
+                    name = value;
+                    FieldChanged();
+                }
+            }
+            public string Type
+            {
+                get { return type; }
+                set
+                {
+                    type = value;
+                    FieldChanged();
+                }
+            }
+            public ObservableCollection<Ingredient> Ingredients { get; set; }
 
             public Recipe()
             {
                 Name = "Recipe";
                 Type = "Type";
-                Ingredients = new List<Ingredient>();
+                Ingredients = new ObservableCollection<Ingredient>();
             }
 
             public Recipe(string name, string type)
@@ -33,7 +54,6 @@ namespace RisingStarProject.RecipeModel
 
             public override string ToString()
             {
-
 
                 StringBuilder sb = new StringBuilder();
                 if (!string.IsNullOrEmpty(Name))
@@ -52,6 +72,13 @@ namespace RisingStarProject.RecipeModel
                     }
                 }
                 return sb.ToString();
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            private void FieldChanged([CallerMemberName]string name = null)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             }
         }
     }
