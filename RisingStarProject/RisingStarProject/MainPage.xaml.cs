@@ -1,20 +1,15 @@
-using RisingStarProject;
 using RisingStarProject.IngedientModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Text.RegularExpressions;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using static RisingStarProject.RecipeModel.Program;
 
@@ -27,11 +22,47 @@ namespace RisingStarProject
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private static string SearchInput;
         ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
+        ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
+        public event PropertyChangedEventHandler PropertyChanged;
+        MessageDialog showDialog;
+
         public MainPage()
         {
             this.InitializeComponent();
-            
+
+            lbxDisplay.ItemsSource = displayRecipes;
+
+            Ingredient I1 = new Ingredient();
+            I1.Name = "Diced Tomatoes";
+            I1.Type = "Fruit";
+            I1.QTY = 1;
+            I1.Measurement = "Cup";
+
+            Ingredient I2 = new Ingredient();
+            I2.Name = "Sliced Jalapenos";
+            I2.Type = "Fruit";
+            I2.QTY = 0.5f;
+            I2.Measurement = "Cup";
+
+            Ingredient I3 = new Ingredient();
+            I3.Name = "Roasted Diced Tomatillo";
+            I3.Type = "Fruit";
+            I3.QTY = 0.25f;
+            I3.Measurement = "Cup";
+
+            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>()
+            {
+                I1, I2, I3
+            };
+
+            recipes.Add(new Recipe { Name = "Ramen", Type = "Main Dish", Ingredients = ingredients });
+            recipes.Add(new Recipe { Name = "Pot Roast", Type = "Main Dish", Ingredients = ingredients });
+            foreach(Recipe r in recipes)
+            {
+                displayRecipes.Add(r);
+            }
         }
 
         private void CreateRecipe_Tapped(object sender, TappedRoutedEventArgs e)
@@ -76,11 +107,10 @@ namespace RisingStarProject
             I3.QTY = 0.25f;
             I3.Measurement = "Cup";
 
-            List<Ingredient> ingredients = new List<Ingredient>
+            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>()
             {
                 I1, I2, I3
             };
-
 
             Recipe SelectedRecipe = new Recipe();
             SelectedRecipe.Name = "Oven Baked Chicken";
@@ -93,49 +123,64 @@ namespace RisingStarProject
         }
 
         //Search Filter.
-        private void Name_Search_Click(object sender, RoutedEventArgs e)
+        private void Name_Search()
         {
-
+            Regex reg = new Regex($"^{SearchInput}?.+");
+            if (!reg.IsMatch(SearchInput))
+            {
+                showDialog = new MessageDialog("Please enter a search field.");
+            }
+            else
+            {
+                displayRecipes.Clear();
+                foreach (Recipe r in recipes)
+                {
+                    if (reg.IsMatch(r.Name))
+                    {
+                        displayRecipes.Add(r);
+                    }
+                }
+            }
         }
 
         //Search Filter.
-        private void Ingredient_Search_Click(object sender, RoutedEventArgs e)
+        private void Ingredient_Search()
         {
-
+            
         }
 
         //Search Filter.
-        private void Type_Search_Click(object sender, RoutedEventArgs e)
+        private void Type_Search()
         {
-
+            
         }
 
         //Search Button Click.
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        //ListBox that will display the recipes.
-        private void Recipe_Display(object sender, RoutedEventArgs e)
-        {
-            ObservableCollection<Recipe> OC =  new ObservableCollection<Recipe>();
-            if (OC.Count != 0)
+            if (cbxList.SelectedValue.ToString() == "Name")
             {
-                foreach (Recipe r in OC)
-                {
-                    recipes.Add(r);
-                }
+                Name_Search();
             }
-
-            lbxDisplay.ItemsSource = recipes;
-            lbxDisplay.DisplayMemberPath = "Name";
+            else if (cbxList.SelectedValue.ToString() == "Type")
+            {
+                Type_Search();
+            }
+            else if (cbxList.SelectedValue.ToString() == "Ingredient")
+            {
+                Ingredient_Search();
+            }
         }
 
         //TextBox Search-bar.
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string input = tbxSearch.Text;
+            SearchInput = tbxSearch.Text;
+        }
+
+        void OnPropertyChanged(string s)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(s));
         }
     }
 }

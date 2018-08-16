@@ -13,32 +13,32 @@
             <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
+        
         <TextBox x:Name="Header"
-                Background="LightGray"
-                Text="My Recipe Book"
-                TextAlignment="Center"
-                FontSize="65"
-                Height="100"
-                Margin="0,0,0,0"
-                VerticalAlignment="Top" 
-                BorderBrush="Black"
-                BorderThickness="4"
-                Grid.ColumnSpan="2"/>
+                 Background="LightGray"
+                 Text="My Recipe Book"
+                 TextAlignment="Center"
+                 FontSize="65"
+                 Height="100"
+                 Margin="0,0,0,0"
+                 VerticalAlignment="Top" 
+                 BorderBrush="Black"
+                 BorderThickness="4"
+                 Grid.ColumnSpan="2"/>
         
         <TextBox x:Name="tbxSearch"
-                Grid.Column="0"
-                Background="White"
-                Text="Search"
-                TextAlignment="Left"
-                FontSize="65"
-                Height="100"
-                Width="400"
-                Margin="170,150,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                BorderBrush="Black" 
-                 TextChanged="Search_TextChanged"
-                 >
+                 Grid.Column="0"
+                 Background="White"
+                 Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}"
+                 TextAlignment="Left"
+                 FontSize="65"
+                 Height="100"
+                 Width="400"
+                 Margin="170,150,0,0"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" 
+                 BorderBrush="Black" 
+                 TextChanged="Search_TextChanged">
         </TextBox>
         
         <Button x:Name="btnCreateRecipe"
@@ -52,30 +52,24 @@
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="New Recipe"
-                Tapped="CreateRecipe_Tapped"
-                >
+                Tapped="CreateRecipe_Tapped">
         </Button>
-        
-        <Button ToolTipService.ToolTip="Alignment"
-                Name="btnList" 
-                Grid.Column="0" 
-                Margin="50,150,0,0"
-                FontSize="65"
-                Height="100"
-                Width="100"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                BorderBrush="Black" 
-                Background="LightGray">
-            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16" Text="&#xE8E4;"/>
-                <Button.Flyout>
-                    <MenuFlyout Placement="Left">
-                        <MenuFlyoutItem Name="mfiName" Text="Name" Icon="AlignRight" Click="Name_Search_Click" />
-                        <MenuFlyoutItem Name="mfiIngredient" Text="Ingredient" Icon="AlignRight" Click="Ingredient_Search_Click"/>
-                        <MenuFlyoutItem Name="mfiType" Text="Type" Icon="AlignRight" Click="Type_Search_Click" />
-                    </MenuFlyout>
-                </Button.Flyout>
-        </Button>
+
+        <ComboBox Name="cbxList"
+                  Grid.Column="0" 
+                  PlaceholderText="≡"
+                  Margin="50,150,0,0"
+                  FontSize="65"
+                  Height="100"
+                  Width="100"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top" 
+                  BorderBrush="Black" 
+                  Background="LightGray">
+            <x:String>Name</x:String>
+            <x:String>Type</x:String>
+            <x:String>Ingredient</x:String>
+        </ComboBox>
 
         <Button Name="btnSearch" 
                 Content="⌕"
@@ -88,8 +82,7 @@
                 VerticalAlignment="Top" 
                 BorderBrush="Black" 
                 Background="LightGray" 
-                Click="Search_Click"
-                >
+                Click="Search_Click">
         </Button>
 
         <ListBox Name="lbxDisplay"
@@ -97,8 +90,6 @@
                  BorderBrush="Black"
                  BorderThickness="2"
                  Margin="20 115 20 20" 
-                 Loaded="Recipe_Display" 
-                 SelectionMode="Extended">
-        </ListBox>
+                 SelectionMode="Extended"/>
     </Grid>
 </Page>
