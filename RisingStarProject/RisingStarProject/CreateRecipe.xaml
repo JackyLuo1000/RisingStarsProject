@@ -29,12 +29,12 @@
                 HorizontalAlignment="Stretch"
                 Background="LightGray">
             <TextBlock x:Name="Header"
-                    Text="Create a Recipe"
-                    TextAlignment="Center"
-                    FontSize="65"
-                    Height="100"
-                    Margin="0,0,0,0"
-                    VerticalAlignment="Top"/>
+                        Text="Create a Recipe"
+                        TextAlignment="Center"
+                        FontSize="65"
+                        Height="100"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Top"/>
         </Border>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" 
@@ -45,9 +45,9 @@
                       Margin="0,0,0,0">
 
             <StackPanel x:Name="CreationControlPanel"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Margin="0">
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="0">
 
                 <TextBox x:Name="RecipeNameTextBox"
                         Background="LightGray"
@@ -113,7 +113,7 @@
                 </TextBox>
 
                 <Button x:Name="AddIngredient"
-                            FontSize="65"
+                            FontSize="50"
                             Height="100"
                             Margin="10,10,10,0"
                             HorizontalAlignment="Stretch"
@@ -165,7 +165,7 @@
                       SelectionChanged="RecipeDisplay_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
+                        <StackPanel >
                             <TextBlock Text="{Binding Path=Name}" />
                             <TextBlock Text="{Binding Path=Type}"/>
                             <ListView ItemsSource="{Binding Ingredients}">
