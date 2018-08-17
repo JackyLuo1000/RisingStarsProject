@@ -33,31 +33,49 @@ namespace RisingStarProject
         private Recipe recipe = new Recipe();
         private ObservableCollection<Recipe> oldRecipes = new ObservableCollection<Recipe>();
         private int recipeIndex = 0;
-        private int ingredientIndex = 0;
+        private int ingredientIndex = -1;
         public CreateRecipe()
         {
             this.InitializeComponent();
             RecipeDisplay.ItemsSource = recipes;
+
         }
 
         private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            //Store the fields from text boxes
+            if (ingredientIndex == -1)
+            {
 
-            string ingredientName = IngredientNameTextBox.Text;
+                //Store the fields from text boxes
 
-            string type = IngredientTypeTextBox.Text;
+                string ingredientName = IngredientNameTextBox.Text;
 
-            float quantity = float.Parse(QuantityTextBox.Text);
+                string type = IngredientTypeTextBox.Text;
 
-            string measurement = MeasurementTextBox.Text;
+                float quantity = float.Parse(QuantityTextBox.Text);
 
-            //Create a newIngredient from the fields
+                string measurement = MeasurementTextBox.Text;
 
-            Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
+                //Create a newIngredient from the fields
 
-            //In the recipe add the ingredient
-            recipes[recipeIndex].Ingredients.Add(newIngredient);
+                Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement };
+
+                //In the recipe add the ingredient
+                recipes[recipeIndex].Ingredients.Add(newIngredient);
+            }
+            else
+            {
+                string ingredientName = IngredientNameTextBox.Text;
+
+                string type = IngredientTypeTextBox.Text;
+
+                float quantity = float.Parse(QuantityTextBox.Text);
+
+                string measurement = MeasurementTextBox.Text;
+
+                Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement };
+                recipes[recipeIndex].Ingredients[ingredientIndex] = newIngredient;
+            }
             
             IngredientNameTextBox.Text = "";
             IngredientTypeTextBox.Text = "";
@@ -100,6 +118,10 @@ namespace RisingStarProject
 
         private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            if(string.IsNullOrEmpty(recipes.Last().Name) || string.IsNullOrEmpty(recipes.Last().Type))
+            {
+                recipes.RemoveAt(recipes.Count - 1);
+            }
             if(recipes.Last().Name == "New Recipe" && recipes.Last().Type == "New Recipe Type")
             {
                 recipes.RemoveAt(recipes.Count - 1);
@@ -121,7 +143,43 @@ namespace RisingStarProject
 
         private void RecipeDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            recipeIndex = RecipeDisplay.SelectedIndex;
+            ingredientIndex = -1;
+        }
 
+        private void DeleteIngredient_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(ingredientIndex != -1 && recipeIndex != -1)
+            {
+                recipes[recipeIndex].Ingredients.RemoveAt(ingredientIndex);
+            }
+        }
+
+        private void IngredientSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(sender is ListView)
+            {
+                if (ingredientIndex == -1)
+                {
+
+                    ListView lv = sender as ListView;
+
+                    ingredientIndex = lv.SelectedIndex;
+
+                    IngredientNameTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Name;
+
+                    IngredientTypeTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Type;
+
+                    QuantityTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].QTY.ToString();
+
+                    MeasurementTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Measurement;
+
+                }
+                else
+                {
+                    ingredientIndex = -1;
+                }
+            }
         }
     }
 }
