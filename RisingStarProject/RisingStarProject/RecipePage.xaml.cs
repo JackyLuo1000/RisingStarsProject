@@ -32,7 +32,7 @@ namespace RisingStarProject
         {
             this.InitializeComponent();
 
-            In.ItemsSource = ContactCollection;
+            IngredientsList.ItemsSource = IngredientCollection;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -49,6 +49,8 @@ namespace RisingStarProject
                     IngredientCollection.Add(i);
                 }
             }
+
+            
         }
 
         private void IngredientsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
