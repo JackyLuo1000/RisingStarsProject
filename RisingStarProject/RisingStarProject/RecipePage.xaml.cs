@@ -34,6 +34,7 @@ namespace RisingStarProject
             if (newRecipe != null)
             {
                 Header.Text = newRecipe.Name;
+                RecipeType.Text += newRecipe.Type; 
                 //ContactCollection.Add(newRecipe);
             }
         }

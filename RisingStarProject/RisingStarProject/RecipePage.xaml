@@ -20,5 +20,16 @@
                 BorderBrush="Black"
                 BorderThickness="4"/>
 
+        <TextBlock x:Name="RecipeType"
+                   Text="Recipe Type: "
+                   Width="500"
+                   Height="50"
+                   TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="30"
+                   Margin="0 200 0 0"
+            />
+
     </Grid>
 </Page>

@@ -50,7 +50,6 @@ namespace RisingStarProject.RecipeModel
                 Name = name;
                 Type = type;
             }
-            
 
             public override string ToString()
             {

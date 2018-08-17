@@ -127,12 +127,15 @@ namespace RisingStarProject
                     recipes.Add(r);
                 }
             }
+
+            lbxDisplay.ItemsSource = recipes;
+            lbxDisplay.DisplayMemberPath = "Name";
         }
 
         //TextBox Search-bar.
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            string input = tbxSearch.Text;
         }
     }
 }
