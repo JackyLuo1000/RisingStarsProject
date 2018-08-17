@@ -89,7 +89,7 @@ namespace RisingStarProject
 
             //Add logic for setting SelectedRecipe to the currently selected recipe
 
-            this.Frame.Navigate(typeof(MainPage), SelectedRecipe);
+            this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
         }
 
         //Search Filter.

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RisingStarProject.IngedientModel;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,20 +25,35 @@ namespace RisingStarProject
     /// </summary>
     public sealed partial class RecipePage : Page
     {
+        private ObservableCollection<Ingredient> IngredientCollection = new ObservableCollection<Ingredient>();
+        private static Recipe currentRecipe = new Recipe();
+
         public RecipePage()
         {
             this.InitializeComponent();
+
+            In.ItemsSource = ContactCollection;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Recipe newRecipe = e.Parameter as Recipe;
+            currentRecipe = newRecipe;
             if (newRecipe != null)
             {
                 Header.Text = newRecipe.Name;
                 RecipeType.Text += newRecipe.Type; 
-                //ContactCollection.Add(newRecipe);
+
+                foreach(Ingredient i in currentRecipe.Ingredients)
+                {
+                    IngredientCollection.Add(i);
+                }
             }
+        }
+
+        private void IngredientsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -100,5 +100,19 @@
                  Loaded="Recipe_Display" 
                  SelectionMode="Extended">
         </ListBox>
+
+        <Button x:Name="TestButton"
+                Grid.Column="0"
+                FontSize="65"
+                Height="100"
+                Width="200"
+                Margin="0,0,0,100"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Test"
+                Tapped="OpenRecipe_Tapped"
+            />
     </Grid>
 </Page>
