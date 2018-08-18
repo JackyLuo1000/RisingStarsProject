@@ -66,17 +66,17 @@ namespace RisingStarProject
 
             Ingredient I2 = new Ingredient();
             I2.Name = "Sliced Jalapenos";
-            I2.Type = "Fruit";
+            I2.Type = "Vegetable";
             I2.QTY = 0.5f;
             I2.Measurement = "Cup";
 
             Ingredient I3 = new Ingredient();
-            I3.Name = "Roasted Diced Tomatillo";
-            I3.Type = "Fruit";
+            I3.Name = "Basil";
+            I3.Type = "Seasoning";
             I3.QTY = 0.25f;
             I3.Measurement = "Cup";
 
-            List<Ingredient> ingredients = new List<Ingredient>
+            ObservableCollection<Ingredient> ingredients = new ObservableCollection <Ingredient>
             {
                 I1, I2, I3
             };
@@ -85,11 +85,11 @@ namespace RisingStarProject
             Recipe SelectedRecipe = new Recipe();
             SelectedRecipe.Name = "Oven Baked Chicken";
             SelectedRecipe.Type = "Main Dish";
-            //SelectedRecipe.Ingredients = ingredients;
+            SelectedRecipe.Ingredients = ingredients;
 
             //Add logic for setting SelectedRecipe to the currently selected recipe
 
-            this.Frame.Navigate(typeof(MainPage), SelectedRecipe);
+            this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
         }
 
         //Search Filter.
