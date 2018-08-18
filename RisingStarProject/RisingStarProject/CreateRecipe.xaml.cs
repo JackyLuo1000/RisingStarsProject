@@ -159,25 +159,27 @@ namespace RisingStarProject
         {
             if(sender is ListView)
             {
-                if (ingredientIndex == -1)
+
+                ListView lv = sender as ListView;
+
+                if(lv.Parent is ListView)
                 {
+                    ListView rv = lv.Parent as ListView;
+                    if (ingredientIndex == -1)
+                    {
+                        recipeIndex = rv.SelectedIndex;
+                        ingredientIndex = lv.SelectedIndex;
 
-                    ListView lv = sender as ListView;
+                        IngredientNameTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Name;
 
-                    ingredientIndex = lv.SelectedIndex;
+                        IngredientTypeTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Type;
 
-                    IngredientNameTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Name;
+                        QuantityTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].QTY.ToString();
 
-                    IngredientTypeTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Type;
+                        MeasurementTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Measurement;
 
-                    QuantityTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].QTY.ToString();
-
-                    MeasurementTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Measurement;
-
-                }
-                else
-                {
-                    ingredientIndex = -1;
+                        ingredientIndex = -1;
+                    }
                 }
             }
         }
