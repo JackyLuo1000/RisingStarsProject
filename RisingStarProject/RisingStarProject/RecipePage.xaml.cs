@@ -37,23 +37,40 @@ namespace RisingStarProject
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Recipe newRecipe = e.Parameter as Recipe;
-            currentRecipe = newRecipe;
-            if (newRecipe != null)
+            if (e.Parameter is Recipe)
             {
+                Recipe newRecipe = e.Parameter as Recipe;
+                currentRecipe = newRecipe;
                 Header.Text = newRecipe.Name;
-                RecipeType.Text += newRecipe.Type; 
+                RecipeType.Text += newRecipe.Type;
 
-                foreach(Ingredient i in currentRecipe.Ingredients)
+                foreach (Ingredient i in currentRecipe.Ingredients)
                 {
                     IngredientCollection.Add(i);
                 }
             }
-
             
+
+
         }
 
         private void IngredientsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Ingredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Save_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
         }

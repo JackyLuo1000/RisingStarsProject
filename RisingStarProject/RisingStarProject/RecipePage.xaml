@@ -43,12 +43,13 @@
                       SelectionChanged="IngredientsList_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <TextBlock Text="Ingredient: "
-                                       Margin="0 0 0 0"/>
-                        <TextBlock Text="{Binding Path=Name}"
-                                       Margin="100 0 0 0"/>
-                        </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Text="{Binding Type}"/>
+                        <TextBlock Text="{Binding QTY}"/>
+                        <TextBlock Text="{Binding Measurement}"/>
+                        
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -69,6 +70,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Center"
                 Margin="0 0 0 50"
+                Tapped="Save_Tapped"
             />
 
         <Button x:Name="Back"
@@ -78,6 +80,7 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Center"
                 Margin="450 0 0 50"
+                Tapped="BackToMenu_Tapped"
             />
 
     </Grid>
