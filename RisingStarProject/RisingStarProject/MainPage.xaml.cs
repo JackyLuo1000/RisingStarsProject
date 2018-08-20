@@ -59,7 +59,9 @@ namespace RisingStarProject
 
             recipes.Add(new Recipe { Name = "Ramen", Type = "Main Dish", Ingredients = ingredients });
             recipes.Add(new Recipe { Name = "Pot Roast", Type = "Main Dish", Ingredients = ingredients });
-            foreach(Recipe r in recipes)
+            recipes.Add(new Recipe { Name = "Pico De Gallo", Type = "Appetizer", Ingredients = ingredients });
+            recipes.Add(new Recipe { Name = "French Fries", Type = "Side Dish", Ingredients = ingredients });
+            foreach (Recipe r in recipes)
             {
                 displayRecipes.Add(r);
             }
@@ -97,13 +99,13 @@ namespace RisingStarProject
 
             Ingredient I2 = new Ingredient();
             I2.Name = "Sliced Jalapenos";
-            I2.Type = "Fruit";
+            I2.Type = "Vegetable";
             I2.QTY = 0.5f;
             I2.Measurement = "Cup";
 
             Ingredient I3 = new Ingredient();
-            I3.Name = "Roasted Diced Tomatillo";
-            I3.Type = "Fruit";
+            I3.Name = "Basil";
+            I3.Type = "Seasoning";
             I3.QTY = 0.25f;
             I3.Measurement = "Cup";
 
@@ -115,11 +117,11 @@ namespace RisingStarProject
             Recipe SelectedRecipe = new Recipe();
             SelectedRecipe.Name = "Oven Baked Chicken";
             SelectedRecipe.Type = "Main Dish";
-            //SelectedRecipe.Ingredients = ingredients;
+            SelectedRecipe.Ingredients = ingredients;
 
             //Add logic for setting SelectedRecipe to the currently selected recipe
 
-            this.Frame.Navigate(typeof(MainPage), SelectedRecipe);
+            this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
         }
 
         //Search Filter.
@@ -146,13 +148,28 @@ namespace RisingStarProject
         //Search Filter.
         private void Ingredient_Search()
         {
-            
+            //Not Implemented Yet.
         }
 
         //Search Filter.
         private void Type_Search()
         {
-            
+            Regex reg = new Regex($"^{SearchInput}?.+");
+            if (!reg.IsMatch(SearchInput))
+            {
+                showDialog = new MessageDialog("Please enter a search field.");
+            }
+            else
+            {
+                displayRecipes.Clear();
+                foreach (Recipe r in recipes)
+                {
+                    if (reg.IsMatch(r.Type))
+                    {
+                        displayRecipes.Add(r);
+                    }
+                }
+            }
         }
 
         //Search Button Click.

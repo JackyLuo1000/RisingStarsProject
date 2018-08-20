@@ -1,0 +1,6 @@
+TextChangedMethod
+	Clear DisplayRecipesList
+	Create regex to look for SearchTextBox.Text search example is regex($"^{SearchTextBox.Text}?.+")
+	foreach recipes in TotalRecipeList
+		if the regex matchs
+			Add the current recipe to the DisplayRecipesList
