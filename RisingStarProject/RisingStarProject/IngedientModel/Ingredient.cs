@@ -5,25 +5,20 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ProtoBuf;
 
 namespace RisingStarProject.IngedientModel
 {
-    [Serializable]
-    public class ListOfIngredients
-    {
-        public List<Ingredient> Ingredients { get; set; }
-        public ListOfIngredients()
-        {
-            Ingredients = new List<Ingredient>();
-        }
-    }
-
-    [Serializable]
+    [ProtoContract]
     public class Ingredient
     {
+        [ProtoMember(1)]
         public string Name { get; set; }//Ex: Brown Sugar, Chicken.
+        [ProtoMember(2)]
         public string Type { get; set; }//Seasoning, Poultry.
+        [ProtoMember(3)]
         public float QTY { get; set; }//2.
+        [ProtoMember(4)]
         public string Measurement { get; set; }//Ex: Tablespoon (TBS), Pounds (LB).
         
 
