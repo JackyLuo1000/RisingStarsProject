@@ -74,5 +74,10 @@ namespace RisingStarProject
         {
 
         }
+
+        private void EditQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
