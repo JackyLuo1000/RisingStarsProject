@@ -85,6 +85,18 @@
                 Click="Search_Click">
         </Button>
 
+        <Button x:Name="OpenRecipe"
+                Height="100"
+                Width="200"
+                Content="Test"
+                FontSize="50"
+                Tapped="OpenRecipe_Tapped"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0 0 0 100">
+            
+        </Button>
+
         <ListBox Name="lbxDisplay"
                  Grid.Column="1"
                  BorderBrush="Black"

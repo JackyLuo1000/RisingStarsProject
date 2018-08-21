@@ -32,7 +32,7 @@
             />
 
         <ListView x:Name="IngredientsList"
-                      Width="800"
+                      Width="1000"
                       Height="400"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
@@ -44,15 +44,71 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBlock Text="{Binding Type}"/>
-                        <TextBlock Text="{Binding QTY}"/>
-                        <TextBlock Text="{Binding Measurement}"/>
+                        <TextBlock Text="Name:" Margin="0 0 0 0" />
+                        <TextBlock Text="{Binding Name}" Margin="10 0 0 0" MinWidth="200"/>
+                        
+                        <TextBlock Text="Type:" Margin="10 0 0 0" />
+                        <TextBlock Text="{Binding Type}" Margin="10 0 0 0" MinWidth="150"/>
+
+                        <TextBlock Text="QTY:" Margin="10 0 0 0" />
+                        <TextBlock Text="{Binding QTY}" Margin="10 0 0 0" MinWidth="100"/>
+
+                        <TextBlock Text="Measurement:" Margin="10 0 0 0" />
+                        <TextBlock Text="{Binding Measurement}" Margin="10 0 0 0" MinWidth="100"/>
                         
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <TextBox x:Name="EditName"
+                 Width="200"
+                 Height="50"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 Margin="0 0 750 125"
+                 TextAlignment="Center"
+                 Background="LightGray"
+                 PlaceholderText="Name"
+                 FontSize="20"
+                 BorderBrush="Black">
+        </TextBox>
+
+        <TextBox x:Name="EditType"
+                 Width="200"
+                 Height="50"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 Margin="0 0 250 125"
+                 TextAlignment="Center"
+                 Background="LightGray"
+                 PlaceholderText="Type"
+                 FontSize="20"
+                 BorderBrush="Black">
+        </TextBox>
+
+        <TextBox x:Name="EditQuantity"
+                 Width="200"
+                 Height="50"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 Margin="250 0 0 125"
+                 TextAlignment="Center"
+                 Background="LightGray"
+                 PlaceholderText="QTY"
+                 FontSize="20"
+                 BorderBrush="Black">
+        </TextBox>
+
+        <TextBox x:Name="EditMeasurement"
+                 Width="200"
+                 Height="50"
+                 VerticalAlignment="Bottom"
+                 HorizontalAlignment="Center"
+                 Margin="750 0 0 125"
+                 Text="Name"
+                 TextAlignment="Center">
+        </TextBox>
 
         <Button x:Name="DeleteRecipe"
                 Width="200"
