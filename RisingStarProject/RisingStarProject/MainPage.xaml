@@ -13,7 +13,11 @@
             <ColumnDefinition Width="50*"/>
             <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
         <TextBox x:Name="Header"
                  Background="LightGray"
                  Text="My Recipe Book"
@@ -24,84 +28,125 @@
                  VerticalAlignment="Top" 
                  BorderBrush="Black"
                  BorderThickness="4"
-                 Grid.ColumnSpan="2"/>
-        
-        <TextBox x:Name="tbxSearch"
-                 Grid.Column="0"
-                 Background="White"
-                 Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Left"
-                 FontSize="65"
-                 Height="100"
-                 Width="400"
-                 Margin="170,150,0,0"
-                 HorizontalAlignment="Left"
-                 VerticalAlignment="Top" 
-                 BorderBrush="Black" 
-                 TextChanged="Search_TextChanged">
-        </TextBox>
-        
-        <Button x:Name="btnCreateRecipe"
-                Grid.Column="0"
-                FontSize="65"
-                Height="100"
-                Width="520"
-                Margin="170,300,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                BorderBrush="Black" 
-                Background="LightGray"
-                Content="New Recipe"
-                Tapped="CreateRecipe_Tapped">
-        </Button>
+                 Grid.ColumnSpan="2"
+                 Grid.Row="0"/>
 
-        <ComboBox Name="cbxList"
-                  Grid.Column="0" 
-                  PlaceholderText="≡"
-                  Margin="50,150,0,0"
-                  FontSize="65"
-                  Height="100"
-                  Width="100"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top" 
-                  BorderBrush="Black" 
-                  Background="LightGray">
-            <x:String>Name</x:String>
-            <x:String>Type</x:String>
-            <x:String>Ingredient</x:String>
-        </ComboBox>
+        <ScrollViewer VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      VerticalScrollMode="Auto"
+                      Grid.Column="0"
+                      Grid.Row="1">
+            <StackPanel VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Name="cbxList"
+                              Grid.Column="0" 
+                              PlaceholderText="≡"
+                              Margin="50,50,0,50"
+                              FontSize="65"
+                              Height="100"
+                              Width="100"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top" 
+                              BorderBrush="Black" 
+                              Background="LightGray">
+                        <x:String>Name</x:String>
+                        <x:String>Type</x:String>
+                        <x:String>Ingredient</x:String>
+                    </ComboBox>
 
-        <Button Name="btnSearch" 
-                Content="⌕"
-                Grid.Column="0" 
-                Margin="590,150,0,0"
-                FontSize="65"
-                Height="100"
-                Width="100"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                BorderBrush="Black" 
-                Background="LightGray" 
-                Click="Search_Click">
-        </Button>
+                    <TextBox x:Name="tbxSearch"
+                             Grid.Column="0"
+                             Background="White"
+                             Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}"
+                             TextAlignment="Left"
+                             FontSize="65"
+                             Height="100"
+                             Width="400"
+                             Margin="10,50,0,50"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top" 
+                             BorderBrush="Black" 
+                             TextChanged="Search_TextChanged">
+                    </TextBox>
 
-        <Button x:Name="OpenRecipe"
-                Height="100"
-                Width="200"
-                Content="Test"
-                FontSize="50"
-                Tapped="OpenRecipe_Tapped"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Margin="0 0 0 100">
-            
-        </Button>
+                    <Button Name="btnSearch" 
+                            Content="⌕"
+                            Grid.Column="0" 
+                            Margin="10,50,0,50"
+                            FontSize="65"
+                            Height="100"
+                            Width="100"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top" 
+                            BorderBrush="Black" 
+                            Background="LightGray" 
+                            Click="Search_Click">
+                    </Button>
+                </StackPanel>
+
+                <Button x:Name="btnCreateRecipe"
+                        Grid.Column="0"
+                        FontSize="65"
+                        Height="100"
+                        Width="520"
+                        Margin="100,10,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" 
+                        BorderBrush="Black" 
+                        Background="LightGray"
+                        Content="New Recipe"
+                        Tapped="CreateRecipe_Tapped">
+                </Button>
+
+                <Button x:Name="SaveRecipesButton"
+                        Grid.Column="0"
+                        FontSize="65"
+                        Height="100"
+                        Width="520"
+                        Margin="100,20,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" 
+                        BorderBrush="Black" 
+                        Background="LightGray"
+                        Content="Save Recipes"
+                        Click="Save_Recipes">
+                </Button>
+
+                <Button x:Name="LoadRecipesButton"
+                        Grid.Column="0"
+                        FontSize="65"
+                        Height="100"
+                        Width="520"
+                        Margin="100,20,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" 
+                        BorderBrush="Black" 
+                        Background="LightGray"
+                        Content="Load Recipes"
+                        Click="Load_Recipes">
+                </Button>
+
+                <Button x:Name="OpenRecipe"
+                        Height="100"
+                        Width="200"
+                        Content="Test"
+                        FontSize="50"
+                        Tapped="OpenRecipe_Tapped"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Margin="0, 20, 0, 0">
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
 
         <ListBox Name="lbxDisplay"
                  Grid.Column="1"
+                 Grid.Row="1"
                  BorderBrush="Black"
                  BorderThickness="2"
-                 Margin="20 115 20 20" 
+                 Margin="20 20 20 20" 
                  SelectionMode="Extended"/>
     </Grid>
 </Page>

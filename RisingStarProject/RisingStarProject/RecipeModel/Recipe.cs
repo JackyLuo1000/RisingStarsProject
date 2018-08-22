@@ -7,17 +7,20 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ProtoBuf;
 
 namespace RisingStarProject.RecipeModel
 {
   class Program
     {
-        [Serializable]
+        [ProtoContract]
         public class Recipe : INotifyPropertyChanged
         {
-
+            [ProtoIgnore]
             private string name;
+            [ProtoIgnore]
             private string type;
+            [ProtoMember(1)]
             public string Name
             {
                 get { return name; }
@@ -27,6 +30,7 @@ namespace RisingStarProject.RecipeModel
                     FieldChanged();
                 }
             }
+            [ProtoMember(2)]
             public string Type
             {
                 get { return type; }
@@ -36,6 +40,7 @@ namespace RisingStarProject.RecipeModel
                     FieldChanged();
                 }
             }
+            [ProtoMember(3)]
             public ObservableCollection<Ingredient> Ingredients { get; set; }
 
             public Recipe()
