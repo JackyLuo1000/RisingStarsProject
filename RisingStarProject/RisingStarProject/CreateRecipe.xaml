@@ -112,7 +112,7 @@
                         HorizontalAlignment="Stretch">
                 </TextBox>
 
-                    <Button x:Name="AddIngredient"
+                <Button x:Name="AddIngredient"
                             FontSize="50"
                             Height="100"
                             Margin="10,10,10,0"
@@ -122,19 +122,9 @@
                             Background="LightGray"
                             Content="Save Ingredient"
                             Tapped="AddIngedient_Tapped"/>
-                    <Button x:Name="DeleteIngredient"
-                            FontSize="50"
-                            Height="100"
-                            Margin="10, 10, 10, 0"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Center"
-                            BorderBrush="Black"
-                            Background="LightGray"
-                            Content="Delete Ingredient"
-                            Tapped="DeleteIngredient_Tapped"/>
 
 
-                    <Button x:Name="BackToMenu"
+                <Button x:Name="BackToMenu"
                         FontSize="50"
                         Height="100"
                         Margin="10,10,10,0"
@@ -180,7 +170,7 @@
                             <TextBlock Text="{Binding Path=Name}" />
                             <TextBlock Text="{Binding Path=Type}"/>
                             <ListView ItemsSource="{Binding Ingredients}" 
-                                      SelectionChanged="IngredientSelectionChanged">
+                                      SelectionMode="None">
                                 
                             </ListView>
                         </StackPanel>

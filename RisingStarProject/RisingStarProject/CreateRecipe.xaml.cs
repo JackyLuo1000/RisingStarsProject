@@ -33,7 +33,6 @@ namespace RisingStarProject
         private Recipe recipe = new Recipe();
         private ObservableCollection<Recipe> oldRecipes = new ObservableCollection<Recipe>();
         private int recipeIndex = 0;
-        private int ingredientIndex = -1;
         public CreateRecipe()
         {
             this.InitializeComponent();
@@ -43,8 +42,6 @@ namespace RisingStarProject
 
         private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (ingredientIndex == -1)
-            {
 
                 //Store the fields from text boxes
 
@@ -62,20 +59,6 @@ namespace RisingStarProject
 
                 //In the recipe add the ingredient
                 recipes[recipeIndex].Ingredients.Add(newIngredient);
-            }
-            else
-            {
-                string ingredientName = IngredientNameTextBox.Text;
-
-                string type = IngredientTypeTextBox.Text;
-
-                float quantity = float.Parse(QuantityTextBox.Text);
-
-                string measurement = MeasurementTextBox.Text;
-
-                Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement };
-                recipes[recipeIndex].Ingredients[ingredientIndex] = newIngredient;
-            }
             
             IngredientNameTextBox.Text = "";
             IngredientTypeTextBox.Text = "";
@@ -144,44 +127,7 @@ namespace RisingStarProject
         private void RecipeDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             recipeIndex = RecipeDisplay.SelectedIndex;
-            ingredientIndex = -1;
         }
-
-        private void DeleteIngredient_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            if(ingredientIndex != -1 && recipeIndex != -1)
-            {
-                recipes[recipeIndex].Ingredients.RemoveAt(ingredientIndex);
-            }
-        }
-
-        private void IngredientSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if(sender is ListView)
-            {
-
-                ListView lv = sender as ListView;
-
-                if(lv.Parent is ListView)
-                {
-                    ListView rv = lv.Parent as ListView;
-                    if (ingredientIndex == -1)
-                    {
-                        recipeIndex = rv.SelectedIndex;
-                        ingredientIndex = lv.SelectedIndex;
-
-                        IngredientNameTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Name;
-
-                        IngredientTypeTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Type;
-
-                        QuantityTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].QTY.ToString();
-
-                        MeasurementTextBox.Text = recipes[recipeIndex].Ingredients[ingredientIndex].Measurement;
-
-                        ingredientIndex = -1;
-                    }
-                }
-            }
-        }
+        
     }
 }
