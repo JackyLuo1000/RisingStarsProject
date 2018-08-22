@@ -39,7 +39,8 @@
                       Margin="0 0 0 0"
                       BorderBrush="Black"
                       BorderThickness="2"
-                      IsItemClickEnabled="True" 
+                      IsItemClickEnabled="True"
+                      ItemClick="IngredientsList_ItemClick"
                       SelectionChanged="IngredientsList_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -106,8 +107,11 @@
                  VerticalAlignment="Bottom"
                  HorizontalAlignment="Center"
                  Margin="750 0 0 125"
-                 Text="Name"
-                 TextAlignment="Center">
+                 TextAlignment="Center"
+                 Background="LightGray"
+                 PlaceholderText="Measurement"
+                 FontSize="20"
+                 BorderBrush="Black">
         </TextBox>
 
         <Button x:Name="DeleteRecipe"

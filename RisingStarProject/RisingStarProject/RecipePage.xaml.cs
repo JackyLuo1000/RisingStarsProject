@@ -79,5 +79,16 @@ namespace RisingStarProject
         {
 
         }
+
+        private void IngredientsList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Ingredient editIngredient = e.ClickedItem as Ingredient;
+            //IngredientCollection.Remove(editIngredient);
+            EditName.PlaceholderText = editIngredient.Name;
+            EditType.PlaceholderText = editIngredient.Type;
+            EditQuantity.PlaceholderText = editIngredient.QTY.ToString();
+            EditMeasurement.PlaceholderText = editIngredient.Measurement;
+
+        }
     }
 }
