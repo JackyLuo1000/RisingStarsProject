@@ -1,3 +1,4 @@
+using ProtoBuf;
 using RisingStarProject.IngedientModel;
 using System;
 using System.Collections.Generic;
@@ -5,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,30 +30,35 @@ namespace RisingStarProject
         ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
         public event PropertyChangedEventHandler PropertyChanged;
         MessageDialog showDialog;
-
         public MainPage()
         {
             this.InitializeComponent();
 
             lbxDisplay.ItemsSource = displayRecipes;
 
-            Ingredient I1 = new Ingredient();
-            I1.Name = "Diced Tomatoes";
-            I1.Type = "Fruit";
-            I1.QTY = 1;
-            I1.Measurement = "Cup";
+            Ingredient I1 = new Ingredient
+            {
+                Name = "Diced Tomatoes",
+                Type = "Fruit",
+                QTY = 1,
+                Measurement = "Cup"
+            };
 
-            Ingredient I2 = new Ingredient();
-            I2.Name = "Sliced Jalapenos";
-            I2.Type = "Fruit";
-            I2.QTY = 0.5f;
-            I2.Measurement = "Cup";
+            Ingredient I2 = new Ingredient
+            {
+                Name = "Sliced Jalapenos",
+                Type = "Fruit",
+                QTY = 0.5f,
+                Measurement = "Cup"
+            };
 
-            Ingredient I3 = new Ingredient();
-            I3.Name = "Roasted Diced Tomatillo";
-            I3.Type = "Fruit";
-            I3.QTY = 0.25f;
-            I3.Measurement = "Cup";
+            Ingredient I3 = new Ingredient
+            {
+                Name = "Roasted Diced Tomatillo",
+                Type = "Fruit",
+                QTY = 0.25f,
+                Measurement = "Cup"
+            };
 
             ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>()
             {
@@ -63,8 +71,9 @@ namespace RisingStarProject
             recipes.Add(new Recipe { Name = "French Fries", Type = "Side Dish", Ingredients = ingredients });
             foreach (Recipe r in recipes)
             {
-                displayRecipes.Add(r);
+                //displayRecipes.Add(r);
             }
+            recipes.Clear();
         }
 
         private void CreateRecipe_Tapped(object sender, TappedRoutedEventArgs e)
@@ -198,6 +207,43 @@ namespace RisingStarProject
         void OnPropertyChanged(string s)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(s));
+        }
+
+        //Saves the all the recipes as a binary serialized .recipes file
+        private async void Save_Recipes(object sender, RoutedEventArgs e)
+        {
+            FileSavePicker fileSavePicker = new FileSavePicker();
+            fileSavePicker.FileTypeChoices.Add("Recipes", new List<string>() { ".recipes" });
+            fileSavePicker.SuggestedFileName = "New Recipes";
+            StorageFile file = await fileSavePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                using (Stream fs = await file.OpenStreamForWriteAsync())
+                {
+                    CachedFileManager.DeferUpdates(file);
+                    Serializer.Serialize(fs, recipes);
+                }
+            }
+        }
+
+        //Clears recipes then loads all recipes from a binary serialized .recipes file
+        private async void Load_Recipes(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker fileOpenPicker = new FileOpenPicker();
+            fileOpenPicker.FileTypeFilter.Add(".recipes");
+            StorageFile file = await fileOpenPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                using (Stream fs = await file.OpenStreamForReadAsync())
+                {
+                    recipes.Clear();
+                    foreach (Recipe recipe in Serializer.Deserialize<ObservableCollection<Recipe>>(fs))
+                    {
+                        recipes.Add(recipe);
+                        displayRecipes.Add(recipe);
+                    }
+                }
+            }
         }
     }
 }
