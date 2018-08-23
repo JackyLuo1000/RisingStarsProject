@@ -42,6 +42,16 @@ namespace RisingStarProject.RecipeModel
             }
             [ProtoMember(3)]
             public ObservableCollection<Ingredient> Ingredients { get; set; }
+          [ProtoMember(4)]
+            public string Instructions
+            {
+                get { return instructions; }
+                set
+                {
+                    instructions = value;
+                    FieldChanged();
+                }
+            }
 
             public Recipe()
             {
