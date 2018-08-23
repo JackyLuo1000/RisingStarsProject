@@ -10,7 +10,7 @@ using ProtoBuf;
 namespace RisingStarProject.IngedientModel
 {
     [ProtoContract]
-    public class Ingredient
+    public class Ingredient : INotifyPropertyChanged
     {
         [ProtoIgnore]
         private string name;

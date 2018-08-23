@@ -134,6 +134,12 @@ namespace RisingStarProject
                     }
                 }
             }
+            if (e.Parameter is Recipe && e.Parameter != null)
+            {
+                Recipe newRecipe = e.Parameter as Recipe;
+                recipes.Add(newRecipe);
+                displayRecipes.Add(newRecipe);
+            }
             base.OnNavigatedTo(e);
         }
 

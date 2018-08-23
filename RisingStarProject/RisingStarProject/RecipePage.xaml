@@ -46,16 +46,16 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Name:" Margin="0 0 0 0" />
-                        <TextBlock Text="{Binding Name}" Margin="10 0 0 0" MinWidth="200"/>
+                        <TextBlock Text="{Binding Path=Name}" Margin="10 0 0 0" MinWidth="200"/>
                         
                         <TextBlock Text="Type:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding Type}" Margin="10 0 0 0" MinWidth="150"/>
+                        <TextBlock Text="{Binding Path=Type}" Margin="10 0 0 0" MinWidth="150"/>
 
                         <TextBlock Text="QTY:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding QTY}" Margin="10 0 0 0" MinWidth="100"/>
+                        <TextBlock Text="{Binding Path=QTY}" Margin="10 0 0 0" MinWidth="100"/>
 
                         <TextBlock Text="Measurement:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding Measurement}" Margin="10 0 0 0" MinWidth="100"/>
+                        <TextBlock Text="{Binding Path=Measurement}" Margin="10 0 0 0" MinWidth="100"/>
                         
                     </StackPanel>
                 </DataTemplate>

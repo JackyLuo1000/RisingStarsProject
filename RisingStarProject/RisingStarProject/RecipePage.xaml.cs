@@ -72,7 +72,7 @@ namespace RisingStarProject
 
         private void Save_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(MainPage), currentRecipe);
         }
 
         private void EditQuantity_TextChanged(object sender, TextChangedEventArgs e)
@@ -99,8 +99,27 @@ namespace RisingStarProject
         private void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
         {
             int index = IngredientsList.SelectedIndex;
-            IngredientCollection[index].Measurement = "TestrString";
-            //IngredientsList.
+
+            if (!string.IsNullOrEmpty(EditName.Text))
+            {
+                IngredientCollection[index].Name = EditName.Text;
+            }
+
+            if (!string.IsNullOrEmpty(EditType.Text))
+            {
+                IngredientCollection[index].Type = EditType.Text;
+            }
+
+            if (!string.IsNullOrEmpty(EditQuantity.Text))
+            { 
+                IngredientCollection[index].QTY = float.Parse(EditQuantity.Text);
+            }
+
+            if (!string.IsNullOrEmpty(EditMeasurement.Text))
+            {
+                IngredientCollection[index].Measurement = EditMeasurement.Text;
+            }
+
         }
     }
 }
