@@ -20,6 +20,8 @@ namespace RisingStarProject.RecipeModel
             private string name;
             [ProtoIgnore]
             private string type;
+            [ProtoIngonre]
+            private string instructions;
             [ProtoMember(1)]
             public string Name
             {
