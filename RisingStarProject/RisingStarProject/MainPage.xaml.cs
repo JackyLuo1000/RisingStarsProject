@@ -283,6 +283,7 @@ namespace RisingStarProject
             {
                 using (Stream fs = await file.OpenStreamForWriteAsync())
                 {
+                    fs.SetLength(0);
                     CachedFileManager.DeferUpdates(file);
                     Serializer.Serialize(fs, recipes);
                 }
@@ -311,67 +312,70 @@ namespace RisingStarProject
 
         private async void Add_Grocery(object sender, RoutedEventArgs e)
         {
-            var mru = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList;
-            if (mruToken != null && mruToken != "")
+            if (lbxDisplay.SelectedIndex >= 0 && lbxDisplay.SelectedIndex < displayRecipes.Count)
             {
-                StorageFile file = await mru.GetFileAsync(mruToken);
-                string text = "";
-                if (file != null)
+                var mru = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList;
+                if (mruToken != null && mruToken != "")
                 {
-                    using (Stream fs = await file.OpenStreamForReadAsync())
+                    StorageFile file = await mru.GetFileAsync(mruToken);
+                    string text = "";
+                    if (file != null)
                     {
-                        using (StreamReader sr = new StreamReader(fs))
+                        using (Stream fs = await file.OpenStreamForReadAsync())
                         {
-                            text = await sr.ReadToEndAsync();
-                        }
-
-                    }
-                    using (Stream fs = await file.OpenStreamForWriteAsync())
-                    {
-                        using (StreamWriter sw = new StreamWriter(fs))
-                        {
-                            await sw.WriteAsync(text);
-                            foreach (Recipe r in displayRecipes)
+                            using (StreamReader sr = new StreamReader(fs))
                             {
-                                await sw.WriteLineAsync($"{r.Name}");
-                                foreach (Ingredient i in r.Ingredients)
+                                text = await sr.ReadToEndAsync();
+                            }
+                        }
+                        using (Stream fs = await file.OpenStreamForWriteAsync())
+                        {
+                            using (StreamWriter sw = new StreamWriter(fs))
+                            {
+                                await sw.WriteAsync(text);
+                                await sw.WriteLineAsync($"{displayRecipes[lbxDisplay.SelectedIndex].Name}");
+                                foreach (Ingredient i in displayRecipes[lbxDisplay.SelectedIndex].Ingredients)
                                 {
                                     await sw.WriteLineAsync($"{i.Name}: {i.QTY} {i.Measurement}");
                                 }
                                 await sw.WriteLineAsync();
                             }
-                        }
 
+                        }
+                    }
+                }
+                else
+                {
+                    FileSavePicker fileSavePicker = new FileSavePicker();
+                    fileSavePicker.FileTypeChoices.Add("Text", new List<string>() { ".txt" });
+                    fileSavePicker.SuggestedFileName = "Grocery List";
+                    StorageFile file = await fileSavePicker.PickSaveFileAsync();
+
+                    if (file != null)
+                    {
+                        using (Stream fs = await file.OpenStreamForWriteAsync())
+                        {
+                            fs.SetLength(0);
+                            using (StreamWriter sw = new StreamWriter(fs))
+                            {
+                                await sw.WriteLineAsync($"{displayRecipes[lbxDisplay.SelectedIndex].Name}");
+                                foreach (Ingredient i in displayRecipes[lbxDisplay.SelectedIndex].Ingredients)
+                                {
+                                    await sw.WriteLineAsync($"{i.Name}: {i.QTY} {i.Measurement}");
+                                }
+                                await sw.WriteLineAsync();
+                                mruToken = mru.Add(file, "grocery");
+                            }
+
+                        }
                     }
                 }
             }
             else
             {
-                FileSavePicker fileSavePicker = new FileSavePicker();
-                fileSavePicker.FileTypeChoices.Add("Text", new List<string>() { ".txt" });
-                fileSavePicker.SuggestedFileName = "Grocery List";
-                StorageFile file = await fileSavePicker.PickSaveFileAsync();
-                if (file != null)
-                {
-                    using (Stream fs = await file.OpenStreamForWriteAsync())
-                    {
-                        using(StreamWriter sw = new StreamWriter(fs))
-                        {
-                            foreach (Recipe r in displayRecipes)
-                            {
-                                await sw.WriteLineAsync($"{r.Name}");
-                                foreach (Ingredient i in r.Ingredients)
-                                {
-                                    await sw.WriteLineAsync($"{i.Name}: {i.QTY} {i.Measurement}");
-                                }
-                                await sw.WriteLineAsync();
-                            }
-                            mruToken = mru.Add(file, "grocery");
-                        }
-                        
-                    }
-                }
+                await (new MessageDialog("Please select a recipe to add to grocery list.")).ShowAsync();
             }
         }
+
     }
 }
