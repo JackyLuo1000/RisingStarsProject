@@ -133,7 +133,19 @@
                         Click="Load_Recipes">
                 </Button>
 
-
+                <Button x:Name="GroceryButton"
+                Grid.Column="0"
+                FontSize="65"
+                Height="100"
+                Width="520"
+                Margin="100,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Grocery Add"
+                        Click="Add_Grocery">
+                </Button>
 
                 <Button x:Name="OpenRecipe"
                 Height="100"
@@ -149,18 +161,6 @@
             </StackPanel>
         </ScrollViewer>
         
-
-        <Button x:Name="OpenRecipe"
-                Height="100"
-                Width="200"
-                Content="Test"
-                FontSize="50"
-                Tapped="OpenRecipe_Tapped"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Margin="0 0 0 100">
-            
-        </Button>
 
         <ListBox Name="lbxDisplay"
                  Grid.Column="1"

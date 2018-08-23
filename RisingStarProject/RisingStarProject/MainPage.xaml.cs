@@ -30,6 +30,7 @@ namespace RisingStarProject
         ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
         public event PropertyChangedEventHandler PropertyChanged;
         MessageDialog showDialog;
+        string mruToken = "";
         public MainPage()
         {
             this.InitializeComponent();
@@ -111,9 +112,8 @@ namespace RisingStarProject
             recipes.Add(new Recipe { Name = "French Fries", Type = "Side Dish", Ingredients = ingredients3 });
             foreach (Recipe r in recipes)
             {
-                //displayRecipes.Add(r);
+                displayRecipes.Add(r);
             }
-            recipes.Clear();
         }
 
         private void CreateRecipe_Tapped(object sender, TappedRoutedEventArgs e)
@@ -131,6 +131,7 @@ namespace RisingStarProject
                     foreach (Recipe r in oldRecipes)
                     {
                         recipes.Add(r);
+                        displayRecipes.Add(r);
                     }
                 }
             }
@@ -297,6 +298,71 @@ namespace RisingStarProject
                     {
                         recipes.Add(recipe);
                         displayRecipes.Add(recipe);
+                    }
+                }
+            }
+        }
+
+        private async void Add_Grocery(object sender, RoutedEventArgs e)
+        {
+            var mru = Windows.Storage.AccessCache.StorageApplicationPermissions.MostRecentlyUsedList;
+            if (mruToken != null && mruToken != "")
+            {
+                StorageFile file = await mru.GetFileAsync(mruToken);
+                string text = "";
+                if (file != null)
+                {
+                    using (Stream fs = await file.OpenStreamForReadAsync())
+                    {
+                        using (StreamReader sr = new StreamReader(fs))
+                        {
+                            text = await sr.ReadToEndAsync();
+                        }
+
+                    }
+                    using (Stream fs = await file.OpenStreamForWriteAsync())
+                    {
+                        using (StreamWriter sw = new StreamWriter(fs))
+                        {
+                            await sw.WriteAsync(text);
+                            foreach (Recipe r in displayRecipes)
+                            {
+                                await sw.WriteLineAsync($"{r.Name}");
+                                foreach (Ingredient i in r.Ingredients)
+                                {
+                                    await sw.WriteLineAsync($"{i.Name}: {i.QTY} {i.Measurement}");
+                                }
+                                await sw.WriteLineAsync();
+                            }
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                FileSavePicker fileSavePicker = new FileSavePicker();
+                fileSavePicker.FileTypeChoices.Add("Text", new List<string>() { ".txt" });
+                fileSavePicker.SuggestedFileName = "Grocery List";
+                StorageFile file = await fileSavePicker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    using (Stream fs = await file.OpenStreamForWriteAsync())
+                    {
+                        using(StreamWriter sw = new StreamWriter(fs))
+                        {
+                            foreach (Recipe r in displayRecipes)
+                            {
+                                await sw.WriteLineAsync($"{r.Name}");
+                                foreach (Ingredient i in r.Ingredients)
+                                {
+                                    await sw.WriteLineAsync($"{i.Name}: {i.QTY} {i.Measurement}");
+                                }
+                                await sw.WriteLineAsync();
+                            }
+                            mruToken = mru.Add(file, "grocery");
+                        }
+                        
                     }
                 }
             }

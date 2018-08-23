@@ -135,7 +135,7 @@
                         Content="Back to Menu"
                         Tapped="BackToMenu_Tapped"/>
 
-                <Button x:Name="SaveRecipe"
+                <Button x:Name="AddRecipe"
                         FontSize="50"
                         Height="100"
                         Margin="10,10,10,0"
@@ -143,8 +143,8 @@
                         VerticalAlignment="Center" 
                         BorderBrush="Black" 
                         Background="LightGray"
-                        Content="Save Recipe"
-                        Tapped="SaveRecipe_Tapped"/>
+                        Content="Add Recipe"
+                        Tapped="AddRecipe_Tapped"/>
             </StackPanel>
 
         </ScrollViewer>

@@ -65,13 +65,13 @@ namespace RisingStarProject
             QuantityTextBox.Text = "";
             MeasurementTextBox.Text = "";
         }
-        private void SaveRecipe_Tapped(object sender, TappedRoutedEventArgs e)
+        private void AddRecipe_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
             //Store information into a new recipe
 
             recipes.Add(new Recipe());
-            recipeIndex++;
+            recipeIndex = recipes.Count - 1;
 
 
             //Add a new recipe to the recipes List
