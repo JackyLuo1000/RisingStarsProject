@@ -84,11 +84,23 @@ namespace RisingStarProject
         {
             Ingredient editIngredient = e.ClickedItem as Ingredient;
             //IngredientCollection.Remove(editIngredient);
+            EditName.Text = "";
+            EditType.Text = "";
+            EditQuantity.Text = "";
+            EditMeasurement.Text = "";
+
             EditName.PlaceholderText = editIngredient.Name;
             EditType.PlaceholderText = editIngredient.Type;
             EditQuantity.PlaceholderText = editIngredient.QTY.ToString();
             EditMeasurement.PlaceholderText = editIngredient.Measurement;
 
+        }
+
+        private void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            int index = IngredientsList.SelectedIndex;
+            IngredientCollection[index].Measurement = "TestrString";
+            //IngredientsList.
         }
     }
 }
