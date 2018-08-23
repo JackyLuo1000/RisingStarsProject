@@ -102,9 +102,6 @@
                 </Button>
 
                 
-
-                
-
                 <Button x:Name="SaveRecipesButton"
                 Grid.Column="0"
                 FontSize="65"

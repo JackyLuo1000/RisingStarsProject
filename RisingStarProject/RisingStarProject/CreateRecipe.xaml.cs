@@ -52,14 +52,11 @@ namespace RisingStarProject
 
             string measurement = MeasurementTextBox.Text;
             
-            //needs a text box
-            string instructions = InstructionsTextBox.Text;
-            //cc
 
            //Create a newIngredient from the fields
 
             //added instructions 
-            Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement, Instructions = instructions };
+            Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
             // cc
 
             //In the recipe add the ingredient
@@ -69,9 +66,6 @@ namespace RisingStarProject
             IngredientTypeTextBox.Text = "";
             QuantityTextBox.Text = "";
             MeasurementTextBox.Text = "";
-            //needs a textbox
-            InstructionsTextBox.Text = "";
-            //cc
             
         }
         private void AddRecipe_Tapped(object sender, TappedRoutedEventArgs e)
@@ -86,6 +80,7 @@ namespace RisingStarProject
             //Add a new recipe to the recipes List
             RecipeNameTextBox.Text = "New Recipe";
             RecipeTypeTextBox.Text = "New Recipe Type";
+            InstructionsTextBox.Text = "New Instructions";
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -131,6 +126,12 @@ namespace RisingStarProject
         {
             string recipeType = RecipeTypeTextBox.Text;
             recipes[recipeIndex].Type = recipeType;
+        }
+
+        private void RecipeInstructionTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string recipeInstruction = InstructionsTextBox.Text;
+            recipes[recipeIndex].Instructions = recipeInstruction;
         }
 
         private void RecipeDisplay_SelectionChanged(object sender, SelectionChangedEventArgs e)

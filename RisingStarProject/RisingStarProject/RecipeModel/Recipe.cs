@@ -20,6 +20,8 @@ namespace RisingStarProject.RecipeModel
             private string name;
             [ProtoIgnore]
             private string type;
+            [ProtoIgnore]
+            private string instructions;
             [ProtoMember(1)]
             public string Name
             {
@@ -42,7 +44,7 @@ namespace RisingStarProject.RecipeModel
             }
             [ProtoMember(3)]
             public ObservableCollection<Ingredient> Ingredients { get; set; }
-          [ProtoMember(4)]
+            [ProtoMember(4)]
             public string Instructions
             {
                 get { return instructions; }
@@ -58,6 +60,7 @@ namespace RisingStarProject.RecipeModel
                 Name = "Recipe";
                 Type = "Type";
                 Ingredients = new ObservableCollection<Ingredient>();
+                Instructions = "";
             }
 
             public Recipe(string name, string type)

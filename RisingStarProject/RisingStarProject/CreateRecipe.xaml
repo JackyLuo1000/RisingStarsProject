@@ -75,6 +75,18 @@
                          TextChanged="RecipeTypeTextBox_TextChanged">
                 </TextBox>
 
+                <TextBox x:Name="InstructionsTextBox"
+                        Background="LightGray"
+                        PlaceholderText="Instuctions"
+                        TextAlignment="Center"
+                        FontSize="50"
+                        Margin="10,10,10,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="Black"
+                         TextChanged="RecipeInstructionTextBox_TextChanged"
+                         Height="200">
+                </TextBox>
+
                 <TextBox x:Name="IngredientNameTextBox"
                         Background="LightGray"
                         PlaceholderText="Name"
@@ -103,6 +115,7 @@
                         HorizontalAlignment="Stretch"
                         BorderBrush="Black">
                 </TextBox>
+                
                 <TextBox x:Name="MeasurementTextBox"
                         Background="LightGray"
                         PlaceholderText="Measurement"
@@ -169,6 +182,7 @@
                         <StackPanel >
                             <TextBlock Text="{Binding Path=Name}" />
                             <TextBlock Text="{Binding Path=Type}"/>
+                            <TextBlock Text="{Binding Path=Instructions}"/>
                             <ListView ItemsSource="{Binding Ingredients}" 
                                       SelectionMode="None">
                                 

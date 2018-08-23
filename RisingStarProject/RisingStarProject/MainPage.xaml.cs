@@ -301,6 +301,7 @@ namespace RisingStarProject
                 using (Stream fs = await file.OpenStreamForReadAsync())
                 {
                     recipes.Clear();
+                    displayRecipes.Clear();
                     foreach (Recipe recipe in Serializer.Deserialize<ObservableCollection<Recipe>>(fs))
                     {
                         recipes.Add(recipe);
