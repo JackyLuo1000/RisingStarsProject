@@ -10,16 +10,53 @@ using ProtoBuf;
 namespace RisingStarProject.IngedientModel
 {
     [ProtoContract]
-    public class Ingredient
+    public class Ingredient : INotifyPropertyChanged
     {
+        [ProtoIgnore]
+        private string name;
+        [ProtoIgnore]
+        private string type;
+        [ProtoIgnore]
+        private float qty;
+        [ProtoIgnore]
+        private string measurement;
+
         [ProtoMember(1)]
-        public string Name { get; set; }//Ex: Brown Sugar, Chicken.
+        public string Name {
+            get { return name; }
+            set
+            {
+                name = value;
+                FieldChanged();
+            }
+        }//Ex: Brown Sugar, Chicken.
         [ProtoMember(2)]
-        public string Type { get; set; }//Seasoning, Poultry.
+        public string Type {
+            get { return type; }
+            set
+            {
+                type = value;
+                FieldChanged();
+            }
+        }//Seasoning, Poultry.
         [ProtoMember(3)]
-        public float QTY { get; set; }//2.
+        public float QTY {
+            get { return qty; }
+            set
+            {
+                qty = value;
+                FieldChanged();
+            }
+        }//2.
         [ProtoMember(4)]
-        public string Measurement { get; set; }//Ex: Tablespoon (TBS), Pounds (LB).
+        public string Measurement {
+            get { return measurement; }
+            set
+            {
+                measurement = value;
+                FieldChanged();
+            }
+        }//Ex: Tablespoon (TBS), Pounds (LB).
         
 
         public Ingredient()
@@ -38,6 +75,14 @@ namespace RisingStarProject.IngedientModel
         public override string ToString()
         {
             return $"Ingredient Name: {Name}, Ingredient Type: {Type}, Quantity: {QTY} {Measurement}.";
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void FieldChanged([CallerMemberName]string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
     /*
