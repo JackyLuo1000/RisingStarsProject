@@ -39,31 +39,40 @@ namespace RisingStarProject
             RecipeDisplay.ItemsSource = recipes;
 
         }
-
-        private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
+       private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
-                //Store the fields from text boxes
+            //Store the fields from text boxes
 
-                string ingredientName = IngredientNameTextBox.Text;
+            string ingredientName = IngredientNameTextBox.Text;
 
-                string type = IngredientTypeTextBox.Text;
+            string type = IngredientTypeTextBox.Text;
 
-                float quantity = float.Parse(QuantityTextBox.Text);
+            float quantity = float.Parse(QuantityTextBox.Text);
 
-                string measurement = MeasurementTextBox.Text;
-
-                //Create a newIngredient from the fields
-
-                Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement };
-
-                //In the recipe add the ingredient
-                recipes[recipeIndex].Ingredients.Add(newIngredient);
+            string measurement = MeasurementTextBox.Text;
             
+            //needs a text box
+            string instructions = InstructionsTextBox.Text;
+            //cc
+
+           //Create a newIngredient from the fields
+
+            //added instructions 
+            Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement, Instructions = instructions };
+            // cc
+
+            //In the recipe add the ingredient
+            recipes[recipeIndex].Ingredients.Add(newIngredient);
+
             IngredientNameTextBox.Text = "";
             IngredientTypeTextBox.Text = "";
             QuantityTextBox.Text = "";
             MeasurementTextBox.Text = "";
+            //needs a textbox
+            InstructionsTextBox.Text = "";
+            //cc
+            
         }
         private void AddRecipe_Tapped(object sender, TappedRoutedEventArgs e)
         {
