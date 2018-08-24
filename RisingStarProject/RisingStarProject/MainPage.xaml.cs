@@ -321,7 +321,6 @@ namespace RisingStarProject
                                 }
                                 await sw.WriteLineAsync();
                             }
-
                         }
                     }
                 }
@@ -331,7 +330,6 @@ namespace RisingStarProject
                     fileSavePicker.FileTypeChoices.Add("Text", new List<string>() { ".txt" });
                     fileSavePicker.SuggestedFileName = "Grocery List";
                     StorageFile file = await fileSavePicker.PickSaveFileAsync();
-
                     if (file != null)
                     {
                         using (Stream fs = await file.OpenStreamForWriteAsync())
