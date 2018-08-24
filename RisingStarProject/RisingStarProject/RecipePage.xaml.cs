@@ -67,17 +67,12 @@ namespace RisingStarProject
         private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(MainPage), currentRecipe);
         }
 
         private void Save_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage), currentRecipe);
-        }
-
-        private void EditQuantity_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void IngredientsList_ItemClick(object sender, ItemClickEventArgs e)
@@ -120,6 +115,12 @@ namespace RisingStarProject
                 IngredientCollection[index].Measurement = EditMeasurement.Text;
             }
 
+        }
+
+        private void DeleteRecipe_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+            this.Frame.Navigate(typeof(MainPage), null);
         }
     }
 }
