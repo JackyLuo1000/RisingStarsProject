@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -212,24 +213,38 @@ namespace RisingStarProject
         //Search Button Click.
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            if (cbxList.SelectedValue.ToString() == "Name")
+            try
             {
-                Name_Search();
+                if (cbxList.SelectedValue.ToString() == "Name")
+                {
+                    Name_Search();
+                }
+                else if (cbxList.SelectedValue.ToString() == "Type")
+                {
+                    Type_Search();
+                }
+                else if (cbxList.SelectedValue.ToString() == "Ingredient")
+                {
+                    Ingredient_Search();
+                }
             }
-            else if (cbxList.SelectedValue.ToString() == "Type")
+            catch (Exception X)
             {
-                Type_Search();
-            }
-            else if (cbxList.SelectedValue.ToString() == "Ingredient")
-            {
-                Ingredient_Search();
+                showDialog = new MessageDialog("An error has occured: " + X);
             }
         }
 
         //TextBox Search-bar.
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SearchInput = tbxSearch.Text;
+            if (SearchInput == String.Empty || SearchInput == null)
+            {
+                SearchInput = "Ramen";
+            }
+            else
+            {
+                SearchInput = tbxSearch.Text;
+            }
         }
 
         void OnPropertyChanged(string s)
@@ -332,7 +347,6 @@ namespace RisingStarProject
                                 await sw.WriteLineAsync();
                                 mruToken = mru.Add(file, "grocery");
                             }
-
                         }
                     }
                 }
