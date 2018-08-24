@@ -85,7 +85,6 @@
                 Click="Search_Click">
                     </Button>
                 </StackPanel>
-                
 
                 <Button x:Name="btnCreateRecipe"
                 Grid.Column="0"
@@ -114,7 +113,6 @@
                 Content="Delete Recipe"
                         Click="Delete_Recipe">
                 </Button>
-
 
                 <Button x:Name="SaveRecipesButton"
                 Grid.Column="0"
@@ -157,10 +155,8 @@
                 Content="Grocery Add"
                         Click="Add_Grocery">
                 </Button>
-
             </StackPanel>
         </ScrollViewer>
-
 
         <ListView Name="lbxDisplay"
                  Grid.Column="1"

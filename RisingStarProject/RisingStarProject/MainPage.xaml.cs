@@ -30,8 +30,8 @@ namespace RisingStarProject
         ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
         public event PropertyChangedEventHandler PropertyChanged;
-        MessageDialog showDialog;
         string mruToken = "";
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -146,72 +146,93 @@ namespace RisingStarProject
         }
 
         //Search Filter.
-        private void Name_Search()
+        private async void Name_Search()
         {
-            Regex reg = new Regex($"{SearchInput}?.+");
-            if (!reg.IsMatch(SearchInput))
+            try
             {
-                showDialog = new MessageDialog("Please enter a search field.");
-            }
-            else
-            {
-                displayRecipes.Clear();
-                foreach (Recipe r in recipes)
+                Regex reg = new Regex($"{SearchInput}");
+                if (!reg.IsMatch(SearchInput))
                 {
-                    if (reg.IsMatch(r.Name))
-                    {
-                        displayRecipes.Add(r);
-                    }
+                    await(new MessageDialog("No Match.")).ShowAsync();
                 }
-            }
-        }
-
-        //Search Filter.
-        private void Ingredient_Search()
-        {
-            Regex reg = new Regex($"{SearchInput}?.+");
-            if (!reg.IsMatch(SearchInput))
-            {
-                showDialog = new MessageDialog("Please enter a search field.");
-            }
-            else
-            {
-                displayRecipes.Clear();
-                foreach (Recipe r in recipes)
-                    foreach (var i in r.Ingredients)
+                else
+                {
+                    displayRecipes.Clear();
+                    foreach (Recipe r in recipes)
                     {
-                        if (reg.IsMatch(i.Name) || reg.IsMatch(i.Type))
+                        if (reg.IsMatch(r.Name))
                         {
                             displayRecipes.Add(r);
-                            break;
                         }
                     }
+                }
+            }
+            catch (Exception X)
+            {
+                await (new MessageDialog("Please enter a search field.")).ShowAsync();
             }
         }
 
         //Search Filter.
-        private void Type_Search()
+        private async void Ingredient_Search()
         {
-            Regex reg = new Regex($"{SearchInput}?.+");
-            if (!reg.IsMatch(SearchInput))
+            try
             {
-                showDialog = new MessageDialog("Please enter a search field.");
-            }
-            else
-            {
-                displayRecipes.Clear();
-                foreach (Recipe r in recipes)
+                Regex reg = new Regex($"{SearchInput}");
+                if (!reg.IsMatch(SearchInput))
                 {
-                    if (reg.IsMatch(r.Type))
+                    await(new MessageDialog("No Match.")).ShowAsync();
+                }
+                else
+                {
+                    displayRecipes.Clear();
+                    foreach (Recipe r in recipes)
+                        foreach (var i in r.Ingredients)
+                        {
+                            if (reg.IsMatch(i.Name) || reg.IsMatch(i.Type))
+                            {
+                                displayRecipes.Add(r);
+                                break;
+                            }
+                        }
+                }
+            }
+            catch (Exception X)
+            {
+                await (new MessageDialog("Please enter a search field.")).ShowAsync();
+            }
+        }
+
+        //Search Filter.
+        private async void Type_Search()
+        {
+            try
+            {
+                Regex reg = new Regex($"{SearchInput}");
+                if (!reg.IsMatch(SearchInput))
+                {
+                    await(new MessageDialog("No Match.")).ShowAsync();
+                }
+                else
+                {
+                    displayRecipes.Clear();
+                    foreach (Recipe r in recipes)
                     {
-                        displayRecipes.Add(r);
+                        if (reg.IsMatch(r.Type))
+                        {
+                            displayRecipes.Add(r);
+                        }
                     }
                 }
+            }
+            catch (Exception X)
+            {
+                await (new MessageDialog("Please enter a search field.")).ShowAsync();
             }
         }
 
         //Search Button Click.
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private async void Search_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -230,21 +251,14 @@ namespace RisingStarProject
             }
             catch (Exception X)
             {
-                showDialog = new MessageDialog("An error has occured: " + X);
+                await(new MessageDialog("Please select a search-filter.")).ShowAsync();
             }
         }
 
         //TextBox Search-bar.
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (SearchInput == String.Empty || SearchInput == null)
-            {
-                SearchInput = "Ramen";
-            }
-            else
-            {
-                SearchInput = tbxSearch.Text;
-            }
+            SearchInput = tbxSearch.Text;
         }
 
         void OnPropertyChanged(string s)
