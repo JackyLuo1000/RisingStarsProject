@@ -72,6 +72,13 @@ namespace RisingStarProject
 
         private void Save_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            currentRecipe.Ingredients.Clear();
+
+            foreach (Ingredient i in IngredientCollection)
+            {
+                currentRecipe.Ingredients.Add(i);
+            }
+
             this.Frame.Navigate(typeof(MainPage), currentRecipe);
         }
 
