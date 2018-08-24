@@ -183,7 +183,7 @@ namespace RisingStarProject
         //Search Filter.
         private void Name_Search()
         {
-            Regex reg = new Regex($"^{SearchInput}?.+");
+            Regex reg = new Regex($"{SearchInput}?.+");
             if (!reg.IsMatch(SearchInput))
             {
                 showDialog = new MessageDialog("Please enter a search field.");
@@ -204,7 +204,7 @@ namespace RisingStarProject
         //Search Filter.
         private void Ingredient_Search()
         {
-            Regex reg = new Regex($"^{SearchInput}?.+");
+            Regex reg = new Regex($"{SearchInput}?.+");
             if (!reg.IsMatch(SearchInput))
             {
                 showDialog = new MessageDialog("Please enter a search field.");
@@ -218,6 +218,7 @@ namespace RisingStarProject
                         if (reg.IsMatch(i.Name) || reg.IsMatch(i.Type))
                         {
                             displayRecipes.Add(r);
+                            break;
                         }
                     }
             }
@@ -226,7 +227,7 @@ namespace RisingStarProject
         //Search Filter.
         private void Type_Search()
         {
-            Regex reg = new Regex($"^{SearchInput}?.+");
+            Regex reg = new Regex($"{SearchInput}?.+");
             if (!reg.IsMatch(SearchInput))
             {
                 showDialog = new MessageDialog("Please enter a search field.");
@@ -375,6 +376,20 @@ namespace RisingStarProject
             else
             {
                 await (new MessageDialog("Please select a recipe to add to grocery list.")).ShowAsync();
+            }
+        }
+
+        private async void Delete_Recipe(object sender, RoutedEventArgs e)
+        {
+            if (lbxDisplay.SelectedIndex >= 0 && lbxDisplay.SelectedIndex < displayRecipes.Count)
+            {
+                Recipe r = displayRecipes[lbxDisplay.SelectedIndex];
+                displayRecipes.Remove(r);
+                recipes.Remove(r);
+            }
+            else
+            {
+                await (new MessageDialog("Please select a recipe to delete.")).ShowAsync();
             }
         }
 

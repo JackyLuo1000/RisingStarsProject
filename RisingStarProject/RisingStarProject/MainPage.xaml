@@ -101,7 +101,21 @@
                 Tapped="CreateRecipe_Tapped">
                 </Button>
 
-                
+                <Button x:Name="DeleteRecipeButton"
+                Grid.Column="0"
+                FontSize="65"
+                Height="100"
+                Width="520"
+                Margin="100,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Delete Recipe"
+                        Click="Delete_Recipe">
+                </Button>
+
+
                 <Button x:Name="SaveRecipesButton"
                 Grid.Column="0"
                 FontSize="65"
@@ -157,14 +171,22 @@
                 </Button>
             </StackPanel>
         </ScrollViewer>
-        
 
-        <ListBox Name="lbxDisplay"
+
+        <ListView Name="lbxDisplay"
                  Grid.Column="1"
                  Grid.Row="1"
                  BorderBrush="Black"
                  BorderThickness="2"
                  Margin="20 20 20 20" 
-                 SelectionMode="Extended"/>
+                 SelectionMode="Extended">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel >
+                        <TextBlock Text="{Binding Path=Name}" FontWeight="Bold" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
