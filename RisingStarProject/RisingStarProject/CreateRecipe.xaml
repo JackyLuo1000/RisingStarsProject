@@ -180,7 +180,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel >
-                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=Name}" FontWeight="Bold"/>
                             <TextBlock Text="{Binding Path=Type}"/>
                             <TextBlock Text="{Binding Path=Instructions}"/>
                             <ListView ItemsSource="{Binding Ingredients}" 
