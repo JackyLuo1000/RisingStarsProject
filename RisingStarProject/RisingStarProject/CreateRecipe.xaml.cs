@@ -39,33 +39,44 @@ namespace RisingStarProject
             RecipeDisplay.ItemsSource = recipes;
 
         }
-       private void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
+       private async void AddIngedient_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            if(!string.IsNullOrEmpty(IngredientNameTextBox.Text)
+                && !string.IsNullOrEmpty(IngredientTypeTextBox.Text)
+                && !string.IsNullOrEmpty(QuantityTextBox.Text)
+                && !string.IsNullOrEmpty(MeasurementTextBox.Text))
+            {
+                //Store the fields from text boxes
 
-            //Store the fields from text boxes
+                string ingredientName = IngredientNameTextBox.Text;
 
-            string ingredientName = IngredientNameTextBox.Text;
+                string type = IngredientTypeTextBox.Text;
 
-            string type = IngredientTypeTextBox.Text;
+                float quantity = float.Parse(QuantityTextBox.Text);
 
-            float quantity = float.Parse(QuantityTextBox.Text);
+                string measurement = MeasurementTextBox.Text;
 
-            string measurement = MeasurementTextBox.Text;
+
+                //Create a newIngredient from the fields
+
+                //added instructions 
+                Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement };
+                // cc
+
+                //In the recipe add the ingredient
+                recipes[recipeIndex].Ingredients.Add(newIngredient);
+
+                IngredientNameTextBox.Text = "";
+                IngredientTypeTextBox.Text = "";
+                QuantityTextBox.Text = "";
+                MeasurementTextBox.Text = "";
+            }
+            else
+            {
+                await (new MessageDialog("Please enter values to all ingredients fields.")).ShowAsync();
+            }
+
             
-
-           //Create a newIngredient from the fields
-
-            //added instructions 
-            Ingredient newIngredient = new Ingredient() { Name = ingredientName, Type = type, QTY = quantity, Measurement = measurement};
-            // cc
-
-            //In the recipe add the ingredient
-            recipes[recipeIndex].Ingredients.Add(newIngredient);
-
-            IngredientNameTextBox.Text = "";
-            IngredientTypeTextBox.Text = "";
-            QuantityTextBox.Text = "";
-            MeasurementTextBox.Text = "";
             
         }
         private void AddRecipe_Tapped(object sender, TappedRoutedEventArgs e)
@@ -138,6 +149,6 @@ namespace RisingStarProject
         {
             recipeIndex = RecipeDisplay.SelectedIndex;
         }
-        
+      
     }
 }
