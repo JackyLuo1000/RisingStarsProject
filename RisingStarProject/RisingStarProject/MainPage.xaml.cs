@@ -26,8 +26,8 @@ namespace RisingStarProject
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public static ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         private static string SearchInput;
-        ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
         public event PropertyChangedEventHandler PropertyChanged;
         MessageDialog showDialog;
@@ -38,83 +38,6 @@ namespace RisingStarProject
 
             lbxDisplay.ItemsSource = displayRecipes;
 
-            Ingredient I1 = new Ingredient
-            {
-                Name = "Diced Tomatoes",
-                Type = "Fruit",
-                QTY = 1,
-                Measurement = "Cup"
-            };
-
-            Ingredient I2 = new Ingredient
-            {
-                Name = "Sliced Jalapenos",
-                Type = "Fruit",
-                QTY = 0.5f,
-                Measurement = "Cup"
-            };
-
-            Ingredient I3 = new Ingredient
-            {
-                Name = "Roasted Diced Tomatillo",
-                Type = "Fruit",
-                QTY = 0.25f,
-                Measurement = "Cup"
-            };
-
-            Ingredient I4 = new Ingredient();
-            I4.Name = "Garlic";
-            I4.Type = "Vegetable";
-            I4.QTY = 1;
-            I4.Measurement = "Tablespoon";
-
-            Ingredient I5 = new Ingredient();
-            I5.Name = "Roasted Serrano";
-            I5.Type = "Fruit";
-            I5.QTY = 0.25f;
-            I5.Measurement = "Cup";
-
-            Ingredient I6 = new Ingredient();
-            I6.Name = "Sliced Avocado";
-            I6.Type = "Fruit";
-            I6.QTY = 0.25f;
-            I6.Measurement = "Cup";
-
-            Ingredient I7 = new Ingredient();
-            I7.Name = "Sliced Potato Strips";
-            I7.Type = "Vegetable";
-            I7.QTY = 1f;
-            I7.Measurement = "Cup";
-
-            Ingredient I8 = new Ingredient();
-            I8.Name = "Salt";
-            I8.Type = "Seasoning";
-            I8.QTY = 2f;
-            I8.Measurement = "Teaspoons";
-
-            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>()
-            {
-                I1, I2, I3
-            };
-
-            ObservableCollection<Ingredient> ingredients2 = new ObservableCollection<Ingredient>()
-            {
-                I1, I2, I3, I4, I5, I6
-            };
-
-            ObservableCollection<Ingredient> ingredients3 = new ObservableCollection<Ingredient>()
-            {
-                I7, I8
-            };
-
-            recipes.Add(new Recipe { Name = "Ramen", Type = "Main Dish", Ingredients = ingredients });
-            recipes.Add(new Recipe { Name = "Pot Roast", Type = "Main Dish", Ingredients = ingredients });
-            recipes.Add(new Recipe { Name = "Pico De Gallo", Type = "Appetizer", Ingredients = ingredients2 });
-            recipes.Add(new Recipe { Name = "French Fries", Type = "Side Dish", Ingredients = ingredients3 });
-            foreach (Recipe r in recipes)
-            {
-                displayRecipes.Add(r);
-            }
         }
 
         private void CreateRecipe_Tapped(object sender, TappedRoutedEventArgs e)

@@ -11,7 +11,7 @@ using ProtoBuf;
 
 namespace RisingStarProject.RecipeModel
 {
-  class Program
+  public class Program
     {
         [ProtoContract]
         public class Recipe : INotifyPropertyChanged
