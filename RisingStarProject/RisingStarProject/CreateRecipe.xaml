@@ -75,17 +75,22 @@
                          TextChanged="RecipeTypeTextBox_TextChanged">
                 </TextBox>
 
-                <TextBox x:Name="InstructionsTextBox"
+                <ScrollViewer Margin="10,10,10,0"
+                              VerticalScrollBarVisibility="Auto">
+                    <TextBox x:Name="InstructionsTextBox"
                         Background="LightGray"
                         PlaceholderText="Instuctions"
-                        TextAlignment="Center"
-                        FontSize="50"
-                        Margin="10,10,10,0"
+                        TextAlignment="Left"
+                        FontSize="25"
                         HorizontalAlignment="Stretch"
                         BorderBrush="Black"
                          TextChanged="RecipeInstructionTextBox_TextChanged"
-                         Height="200">
-                </TextBox>
+                         Height="200"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True">
+                    </TextBox>
+                </ScrollViewer>
+                
 
                 <TextBox x:Name="IngredientNameTextBox"
                         Background="LightGray"
