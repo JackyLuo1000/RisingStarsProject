@@ -129,6 +129,8 @@ namespace RisingStarProject
                 ObservableCollection<Recipe> oldRecipes = e.Parameter as ObservableCollection<Recipe>;
                 if (oldRecipes.Count != 0)
                 {
+                    recipes.Clear();
+                    displayRecipes.Clear();
                     foreach (Recipe r in oldRecipes)
                     {
                         recipes.Add(r);
