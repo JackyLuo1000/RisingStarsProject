@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -98,28 +99,36 @@ namespace RisingStarProject
 
         }
 
-        private void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            int index = IngredientsList.SelectedIndex;
-
-            if (!string.IsNullOrEmpty(EditName.Text))
+            if(IngredientsList.SelectedIndex >= 0 && IngredientsList.SelectedIndex < IngredientCollection.Count)
             {
-                IngredientCollection[index].Name = EditName.Text;
-            }
+                int index = IngredientsList.SelectedIndex;
 
-            if (!string.IsNullOrEmpty(EditType.Text))
+                if (!string.IsNullOrEmpty(EditName.Text))
+                {
+                    IngredientCollection[index].Name = EditName.Text;
+                }
+
+                if (!string.IsNullOrEmpty(EditType.Text))
+                {
+                    IngredientCollection[index].Type = EditType.Text;
+                }
+
+                if (!string.IsNullOrEmpty(EditQuantity.Text))
+                {
+                    IngredientCollection[index].QTY = float.Parse(EditQuantity.Text);
+                }
+
+                if (!string.IsNullOrEmpty(EditMeasurement.Text))
+                {
+                    IngredientCollection[index].Measurement = EditMeasurement.Text;
+                }
+
+            }
+            else
             {
-                IngredientCollection[index].Type = EditType.Text;
-            }
-
-            if (!string.IsNullOrEmpty(EditQuantity.Text))
-            { 
-                IngredientCollection[index].QTY = float.Parse(EditQuantity.Text);
-            }
-
-            if (!string.IsNullOrEmpty(EditMeasurement.Text))
-            {
-                IngredientCollection[index].Measurement = EditMeasurement.Text;
+                await (new MessageDialog("Please select an ingredient to delete.")).ShowAsync();
             }
 
         }
