@@ -330,14 +330,6 @@ namespace RisingStarProject
             }
         }
 
-        //private void lbxDisplay_ItemClick(object sender, ItemClickEventArgs e)
-        //{
-        //    Recipe SelectedRecipe = e.ClickedItem as Recipe;
-        //    this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
-        //    recipes.Remove(SelectedRecipe);
-        //    displayRecipes.Remove(SelectedRecipe);
-        //}
-
         private async void Edit_Recipe(object sender, RoutedEventArgs e)
         {
             if (lbxDisplay.SelectedIndex >= 0 && lbxDisplay.SelectedIndex < displayRecipes.Count)

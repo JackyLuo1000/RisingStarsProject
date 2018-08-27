@@ -125,7 +125,7 @@
                 BorderBrush="Black" 
                 Background="LightGray"
                 Content="Edit Recipe"
-                        Click="Delete_Recipe">
+                        Click="Edit_Recipe">
                 </Button>
 
                 <Button x:Name="SaveRecipesButton"
@@ -180,7 +180,9 @@
                  Margin="20 20 20 20" 
                  SelectionMode="Extended"
                  IsItemClickEnabled="True"
-                 ItemClick="lbxDisplay_ItemClick">
+                  >
+
+            <!--ItemClick="lbxDisplay_ItemClick"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel >

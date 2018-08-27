@@ -181,7 +181,6 @@ namespace RisingStarProject
                 newIngredient.Measurement = "Empty";
 
             }
-
             EditName.Text = "";
             EditType.Text = "";
             EditQuantity.Text = "";
