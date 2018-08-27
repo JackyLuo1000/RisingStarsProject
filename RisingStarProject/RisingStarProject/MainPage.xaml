@@ -114,6 +114,20 @@
                         Click="Delete_Recipe">
                 </Button>
 
+                <Button x:Name="EditRecipeButton"
+                Grid.Column="0"
+                FontSize="65"
+                Height="100"
+                Width="520"
+                Margin="100,20,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" 
+                BorderBrush="Black" 
+                Background="LightGray"
+                Content="Edit Recipe"
+                        Click="Delete_Recipe">
+                </Button>
+
                 <Button x:Name="SaveRecipesButton"
                 Grid.Column="0"
                 FontSize="65"

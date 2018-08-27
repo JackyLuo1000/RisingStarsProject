@@ -330,12 +330,27 @@ namespace RisingStarProject
             }
         }
 
-        private void lbxDisplay_ItemClick(object sender, ItemClickEventArgs e)
+        //private void lbxDisplay_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    Recipe SelectedRecipe = e.ClickedItem as Recipe;
+        //    this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
+        //    recipes.Remove(SelectedRecipe);
+        //    displayRecipes.Remove(SelectedRecipe);
+        //}
+
+        private async void Edit_Recipe(object sender, RoutedEventArgs e)
         {
-            Recipe SelectedRecipe = e.ClickedItem as Recipe;
-            this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
-            recipes.Remove(SelectedRecipe);
-            displayRecipes.Remove(SelectedRecipe);
+            if (lbxDisplay.SelectedIndex >= 0 && lbxDisplay.SelectedIndex < displayRecipes.Count)
+            {
+                Recipe r = displayRecipes[lbxDisplay.SelectedIndex];
+                this.Frame.Navigate(typeof(RecipePage), r);
+                displayRecipes.Remove(r);
+                recipes.Remove(r);
+            }
+            else
+            {
+                await (new MessageDialog("Please select a recipe to edit.")).ShowAsync();
+            }
         }
     }
 }
