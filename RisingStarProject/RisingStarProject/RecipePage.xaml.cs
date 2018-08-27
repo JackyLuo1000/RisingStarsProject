@@ -124,7 +124,15 @@ namespace RisingStarProject
                 {
                     IngredientCollection[index].Measurement = EditMeasurement.Text;
                 }
-
+                EditName.PlaceholderText = IngredientCollection[index].Name;
+                EditType.PlaceholderText = IngredientCollection[index].Type;
+                EditQuantity.PlaceholderText = IngredientCollection[index].QTY.ToString();
+                EditMeasurement.PlaceholderText = IngredientCollection[index].Measurement;
+                EditName.Text = "";
+                EditType.Text = "";
+                EditQuantity.Text = "";
+                EditMeasurement.Text = "";
+                IngredientsList.SelectedIndex = -1;
             }
             else
             {
@@ -142,12 +150,45 @@ namespace RisingStarProject
         private void AddIngredient_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Ingredient newIngredient = new Ingredient();
-            newIngredient.Name = "Empty";
-            newIngredient.Type = "Empty";
-            newIngredient.QTY = 0;
-            newIngredient.Measurement = "Empty";
+            if(IngredientsList.SelectedIndex < 0 || IngredientsList.SelectedIndex >= IngredientCollection.Count)
+            {
+                if (!string.IsNullOrEmpty(EditName.Text))
+                {
+                    newIngredient.Name = EditName.Text;
+                }
+
+                if (!string.IsNullOrEmpty(EditType.Text))
+                {
+                    newIngredient.Type = EditType.Text;
+                }
+
+                if (!string.IsNullOrEmpty(EditQuantity.Text))
+                {
+                    newIngredient.QTY = float.Parse(EditQuantity.Text);
+                }
+
+                if (!string.IsNullOrEmpty(EditMeasurement.Text))
+                {
+                    newIngredient.Measurement = EditMeasurement.Text;
+                }
+
+            }
+            else
+            {
+                newIngredient.Name = "Empty";
+                newIngredient.Type = "Empty";
+                newIngredient.QTY = 0;
+                newIngredient.Measurement = "Empty";
+
+            }
+
+            EditName.Text = "";
+            EditType.Text = "";
+            EditQuantity.Text = "";
+            EditMeasurement.Text = "";
 
             IngredientCollection.Add(newIngredient);
+            IngredientsList.SelectedIndex = -1;
         }
     }
 }
