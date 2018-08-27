@@ -50,7 +50,7 @@ namespace RisingStarProject
                     IngredientCollection.Add(i);
                 }
             }
-            
+
 
 
         }
@@ -101,7 +101,7 @@ namespace RisingStarProject
 
         private async void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(IngredientsList.SelectedIndex >= 0 && IngredientsList.SelectedIndex < IngredientCollection.Count)
+            if (IngredientsList.SelectedIndex >= 0 && IngredientsList.SelectedIndex < IngredientCollection.Count)
             {
                 int index = IngredientsList.SelectedIndex;
 
@@ -136,7 +136,7 @@ namespace RisingStarProject
             }
             else
             {
-                await (new MessageDialog("Please select an ingredient to delete.")).ShowAsync();
+                await (new MessageDialog("Please select an ingredient to update.")).ShowAsync();
             }
 
         }
@@ -150,37 +150,42 @@ namespace RisingStarProject
         private void AddIngredient_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Ingredient newIngredient = new Ingredient();
-            if(IngredientsList.SelectedIndex < 0 || IngredientsList.SelectedIndex >= IngredientCollection.Count)
+            if (!string.IsNullOrEmpty(EditName.Text))
             {
-                if (!string.IsNullOrEmpty(EditName.Text))
-                {
-                    newIngredient.Name = EditName.Text;
-                }
-
-                if (!string.IsNullOrEmpty(EditType.Text))
-                {
-                    newIngredient.Type = EditType.Text;
-                }
-
-                if (!string.IsNullOrEmpty(EditQuantity.Text))
-                {
-                    newIngredient.QTY = float.Parse(EditQuantity.Text);
-                }
-
-                if (!string.IsNullOrEmpty(EditMeasurement.Text))
-                {
-                    newIngredient.Measurement = EditMeasurement.Text;
-                }
-
+                newIngredient.Name = EditName.Text;
             }
             else
             {
                 newIngredient.Name = "Empty";
-                newIngredient.Type = "Empty";
-                newIngredient.QTY = 0;
-                newIngredient.Measurement = "Empty";
-
             }
+
+            if (!string.IsNullOrEmpty(EditType.Text))
+            {
+                newIngredient.Type = EditType.Text;
+            }
+            else
+            {
+                newIngredient.Type = "Empty";
+            }
+
+            if (!string.IsNullOrEmpty(EditQuantity.Text))
+            {
+                newIngredient.QTY = float.Parse(EditQuantity.Text);
+            }
+            else
+            {
+                newIngredient.QTY = 0;
+            }
+
+            if (!string.IsNullOrEmpty(EditMeasurement.Text))
+            {
+                newIngredient.Measurement = EditMeasurement.Text;
+            }
+            else
+            {
+                newIngredient.Measurement = "Empty";
+            }
+
             EditName.Text = "";
             EditType.Text = "";
             EditQuantity.Text = "";
