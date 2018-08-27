@@ -129,5 +129,16 @@ namespace RisingStarProject
 
             this.Frame.Navigate(typeof(MainPage), null);
         }
+
+        private void AddIngredient_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Ingredient newIngredient = new Ingredient();
+            newIngredient.Name = "Empty";
+            newIngredient.Type = "Empty";
+            newIngredient.QTY = 0;
+            newIngredient.Measurement = "Empty";
+
+            IngredientCollection.Add(newIngredient);
+        }
     }
 }

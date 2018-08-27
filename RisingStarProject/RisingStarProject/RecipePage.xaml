@@ -157,5 +157,15 @@
                 Tapped="BackToMenu_Tapped"
             />
 
+        <Button x:Name="AddIngredient"
+                Width="200"
+                Height="50"
+                Content="Add Ingredient"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0 0 50 300"
+                Tapped="AddIngredient_Tapped"
+            />
+
     </Grid>
 </Page>

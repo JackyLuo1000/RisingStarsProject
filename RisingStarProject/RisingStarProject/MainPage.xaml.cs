@@ -28,7 +28,7 @@ namespace RisingStarProject
     {
         public static ObservableCollection<Recipe> recipes = new ObservableCollection<Recipe>();
         private static string SearchInput;
-        ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
+        public static ObservableCollection<Recipe> displayRecipes = new ObservableCollection<Recipe>();
         public event PropertyChangedEventHandler PropertyChanged;
         string mruToken = "";
 
@@ -335,6 +335,7 @@ namespace RisingStarProject
             Recipe SelectedRecipe = e.ClickedItem as Recipe;
             this.Frame.Navigate(typeof(RecipePage), SelectedRecipe);
             recipes.Remove(SelectedRecipe);
+            displayRecipes.Remove(SelectedRecipe);
         }
     }
 }
