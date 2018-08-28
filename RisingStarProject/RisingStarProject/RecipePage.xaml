@@ -30,12 +30,17 @@
                    FontSize="30"
                    Margin="0 100 0 0"
             />
+        
+        <ScrollViewer x:Name="PageContent"
+                      Width="1200"
+                      Margin="0 200 0 0">
 
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
         <ListView x:Name="IngredientsList"
-                      Width="1000"
+                      Width="1200"
                       Height="400"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
                       Margin="0 0 0 0"
                       BorderBrush="Black"
                       BorderThickness="2"
@@ -62,15 +67,20 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Margin="0 50 0 50">
         <TextBox x:Name="EditName"
                  Width="200"
                  Height="50"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Margin="0 0 800 125"
                  TextAlignment="Center"
                  Background="LightGray"
                  PlaceholderText="Name"
+                 Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
         </TextBox>
@@ -78,12 +88,10 @@
         <TextBox x:Name="EditType"
                  Width="200"
                  Height="50"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Margin="0 0 350 125"
                  TextAlignment="Center"
                  Background="LightGray"
                  PlaceholderText="Type"
+                 Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
         </TextBox>
@@ -91,12 +99,10 @@
         <TextBox x:Name="EditQuantity"
                  Width="200"
                  Height="50"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Margin="100 0 0 125"
                  TextAlignment="Center"
                  Background="LightGray"
                  PlaceholderText="QTY"
+                 Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
         </TextBox>
@@ -104,12 +110,10 @@
         <TextBox x:Name="EditMeasurement"
                  Width="200"
                  Height="50"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Margin="550 0 0 125"
                  TextAlignment="Center"
                  Background="LightGray"
                  PlaceholderText="Measurement"
+                 Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
         </TextBox>
@@ -117,43 +121,50 @@
         <Button x:Name="UpdateIngredient"
                  Width="100"
                  Height="50"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"
-                 Margin="900 0 0 125"
                  Background="LightGray"
                  FontSize="20"
                  Content="Update"
                  BorderBrush="Black"
                  Tapped="UpdateIngredient_Tapped">
         </Button>
+        </StackPanel>
 
+            <TextBox x:Name="Intructions"
+                     Width="600"
+                     Height="300"
+                     TextAlignment="Left"
+                     FontSize="25"
+                     Margin="0 0 0 50"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap">
+                
+            </TextBox>
+
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 50">
         <Button x:Name="DeleteRecipe"
                 Width="200"
                 Height="50"
+                Margin="0 0 25 0"
                 Content="Delete Recipe"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Margin="0 0 450 50"
                 Tapped="DeleteRecipe_Tapped"
             />
 
         <Button x:Name="SaveChanges"
                 Width="200"
                 Height="50"
+                Margin="0 0 25 0"
                 Content="Save Changes"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Margin="0 0 0 50"
                 Tapped="Save_Tapped"
             />
 
         <Button x:Name="Back"
                 Width="200"
                 Height="50"
+                Margin="0 0 25 0"
                 Content="Back to Menu"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Margin="450 0 0 50"
                 Tapped="BackToMenu_Tapped"
             />
 
@@ -161,11 +172,13 @@
                 Width="200"
                 Height="50"
                 Content="Add Ingredient"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Margin="0 0 50 300"
                 Tapped="AddIngredient_Tapped"
             />
+
+        </StackPanel>
+        </StackPanel>
+        </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>
