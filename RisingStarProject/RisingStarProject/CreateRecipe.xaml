@@ -79,7 +79,7 @@
                               VerticalScrollBarVisibility="Auto">
                     <TextBox x:Name="InstructionsTextBox"
                         Background="LightGray"
-                        PlaceholderText="Instuctions"
+                        PlaceholderText="Instructions"
                         TextAlignment="Left"
                         FontSize="25"
                         HorizontalAlignment="Stretch"
