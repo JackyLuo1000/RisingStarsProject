@@ -49,22 +49,14 @@ namespace RisingStarProject
                 {
                     IngredientCollection.Add(i);
                 }
+
+                Instructions.Text = currentRecipe.Instructions;
             }
 
 
 
         }
-
-        private void IngredientsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Ingredients_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        
         private void BackToMenu_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
@@ -86,7 +78,6 @@ namespace RisingStarProject
         private void IngredientsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             Ingredient editIngredient = e.ClickedItem as Ingredient;
-            //IngredientCollection.Remove(editIngredient);
             EditName.Text = "";
             EditType.Text = "";
             EditQuantity.Text = "";
@@ -96,7 +87,6 @@ namespace RisingStarProject
             EditType.PlaceholderText = editIngredient.Type;
             EditQuantity.PlaceholderText = editIngredient.QTY.ToString();
             EditMeasurement.PlaceholderText = editIngredient.Measurement;
-
         }
 
         private async void UpdateIngredient_Tapped(object sender, TappedRoutedEventArgs e)
@@ -193,6 +183,11 @@ namespace RisingStarProject
 
             IngredientCollection.Add(newIngredient);
             IngredientsList.SelectedIndex = -1;
+        }
+
+        private void Intructions_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            currentRecipe.Instructions = Instructions.Text;
         }
     }
 }

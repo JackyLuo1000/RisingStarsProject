@@ -18,7 +18,8 @@
                 Margin="0,0,0,0"
                 VerticalAlignment="Top" 
                 BorderBrush="Black"
-                BorderThickness="4"/>
+                BorderThickness="4"
+                 IsEnabled="False"/>
 
         <TextBlock x:Name="RecipeType"
                    Text="Recipe Type: "
@@ -30,52 +31,51 @@
                    FontSize="30"
                    Margin="0 100 0 0"
             />
-        
+
         <ScrollViewer x:Name="PageContent"
                       Width="1200"
                       Margin="0 200 0 0">
 
-        <StackPanel Orientation="Vertical"
+            <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-        <ListView x:Name="IngredientsList"
+                <ListView x:Name="IngredientsList"
                       Width="1200"
                       Height="400"
                       Margin="0 0 0 0"
                       BorderBrush="Black"
                       BorderThickness="2"
                       IsItemClickEnabled="True"
-                      ItemClick="IngredientsList_ItemClick"
-                      SelectionChanged="IngredientsList_SelectionChanged">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Name:" Margin="0 0 0 0" />
-                        <TextBlock Text="{Binding Path=Name}" Margin="10 0 0 0" MinWidth="200"/>
-                        
-                        <TextBlock Text="Type:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding Path=Type}" Margin="10 0 0 0" MinWidth="150"/>
+                      ItemClick="IngredientsList_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Name:" Margin="0 0 0 0" />
+                                <TextBlock Text="{Binding Path=Name}" Margin="10 0 0 0" MinWidth="200"/>
 
-                        <TextBlock Text="QTY:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding Path=QTY}" Margin="10 0 0 0" MinWidth="100"/>
+                                <TextBlock Text="Type:" Margin="10 0 0 0" />
+                                <TextBlock Text="{Binding Path=Type}" Margin="10 0 0 0" MinWidth="150"/>
 
-                        <TextBlock Text="Measurement:" Margin="10 0 0 0" />
-                        <TextBlock Text="{Binding Path=Measurement}" Margin="10 0 0 0" MinWidth="100"/>
-                        
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                                <TextBlock Text="QTY:" Margin="10 0 0 0" />
+                                <TextBlock Text="{Binding Path=QTY}" Margin="10 0 0 0" MinWidth="100"/>
 
-        <StackPanel Orientation="Vertical"
+                                <TextBlock Text="Measurement:" Margin="10 0 0 0" />
+                                <TextBlock Text="{Binding Path=Measurement}" Margin="10 0 0 0" MinWidth="100"/>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackPanel Orientation="Vertical"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center">
-        <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center"
                     Margin="0 50 0 50">
-        <TextBox x:Name="EditName"
-                 Width="200"
+                        <TextBox x:Name="EditName"
+                 Width="150"
                  Height="50"
                  TextAlignment="Center"
                  Background="LightGray"
@@ -83,10 +83,10 @@
                  Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
-        </TextBox>
+                        </TextBox>
 
-        <TextBox x:Name="EditType"
-                 Width="200"
+                        <TextBox x:Name="EditType"
+                 Width="150"
                  Height="50"
                  TextAlignment="Center"
                  Background="LightGray"
@@ -94,10 +94,10 @@
                  Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
-        </TextBox>
+                        </TextBox>
 
-        <TextBox x:Name="EditQuantity"
-                 Width="200"
+                        <TextBox x:Name="EditQuantity"
+                 Width="150"
                  Height="50"
                  TextAlignment="Center"
                  Background="LightGray"
@@ -105,10 +105,10 @@
                  Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
-        </TextBox>
+                        </TextBox>
 
-        <TextBox x:Name="EditMeasurement"
-                 Width="200"
+                        <TextBox x:Name="EditMeasurement"
+                 Width="150"
                  Height="50"
                  TextAlignment="Center"
                  Background="LightGray"
@@ -116,35 +116,46 @@
                  Margin="0 0 25 0"
                  FontSize="20"
                  BorderBrush="Black">
-        </TextBox>
+                        </TextBox>
 
-        <Button x:Name="UpdateIngredient"
-                 Width="100"
-                 Height="50"
-                 Background="LightGray"
-                 FontSize="20"
-                 Content="Update"
-                 BorderBrush="Black"
-                 Tapped="UpdateIngredient_Tapped">
-        </Button>
-        </StackPanel>
+                        <Button x:Name="UpdateIngredient"
+                                 Width="100"
+                                 Height="50"
+                                 Background="LightGray"
+                                 FontSize="20"
+                                 Content="Update"
+                                 BorderBrush="Black"
+                                 Tapped="UpdateIngredient_Tapped">
+                        </Button>
 
-            <TextBox x:Name="Intructions"
+
+                        <Button x:Name="AddIngredient"
+                                Width="150"
+                                Height="50"
+                                Content="Add Ingredient"
+                                Tapped="AddIngredient_Tapped"
+                                Margin="10, 0, 0, 0"
+                                BorderBrush="Black"
+            />
+                    </StackPanel>
+
+                    <TextBox x:Name="Instructions"
                      Width="600"
                      Height="300"
                      TextAlignment="Left"
                      FontSize="25"
                      Margin="0 0 0 50"
                      AcceptsReturn="True"
-                     TextWrapping="Wrap">
-                
-            </TextBox>
+                     TextWrapping="Wrap"
+                     TextChanged="Intructions_TextChanged">
 
-        <StackPanel Orientation="Horizontal"
+                    </TextBox>
+
+                    <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center"
                     Margin="0 0 0 50">
-        <Button x:Name="DeleteRecipe"
+                        <Button x:Name="DeleteRecipe"
                 Width="200"
                 Height="50"
                 Margin="0 0 25 0"
@@ -152,7 +163,7 @@
                 Tapped="DeleteRecipe_Tapped"
             />
 
-        <Button x:Name="SaveChanges"
+                        <Button x:Name="SaveChanges"
                 Width="200"
                 Height="50"
                 Margin="0 0 25 0"
@@ -160,7 +171,7 @@
                 Tapped="Save_Tapped"
             />
 
-        <Button x:Name="Back"
+                        <Button x:Name="Back"
                 Width="200"
                 Height="50"
                 Margin="0 0 25 0"
@@ -168,16 +179,10 @@
                 Tapped="BackToMenu_Tapped"
             />
 
-        <Button x:Name="AddIngredient"
-                Width="200"
-                Height="50"
-                Content="Add Ingredient"
-                Tapped="AddIngredient_Tapped"
-            />
 
-        </StackPanel>
-        </StackPanel>
-        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
 
     </Grid>
