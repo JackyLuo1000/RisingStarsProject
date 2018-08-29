@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="396f52ee-be33-4f80-8fb3-4354b7286a71" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Personal Recipe Manager</DisplayName>
-    <PublisherDisplayName>Sagebrecht</PublisherDisplayName>
+    <PublisherDisplayName>Team Rising Stars</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
