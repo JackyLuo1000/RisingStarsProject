@@ -9,17 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="Header"
-                Background="LightGray"
+        <Border Margin="0"
+                BorderBrush="Black"
+                BorderThickness="4"
+                VerticalAlignment="Top"
+                Background="LightGray">
+            <TextBlock x:Name="Header"
                 Text="Recipe Name"
                 TextAlignment="Center"
                 FontSize="65"
                 Height="100"
                 Margin="0,0,0,0"
-                VerticalAlignment="Top" 
-                BorderBrush="Black"
-                BorderThickness="4"
-                 IsEnabled="False"/>
+                VerticalAlignment="Top"/>
+        </Border>
+        
 
         <TextBlock x:Name="RecipeType"
                    Text="Recipe Type: "
